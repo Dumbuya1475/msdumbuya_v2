@@ -329,11 +329,13 @@ export default function App() {
                    <div className={`px-4 h-10 rounded-full flex items-center justify-center text-[10px] font-bold lowercase ${isDark ? 'bg-white text-black' : 'bg-black text-white'}`}>msdumbuya</div>
                    <span className={`text-[10px] font-bold uppercase tracking-widest ${isDark ? 'text-white/40' : 'text-neutral-400'}`}>© 2026 Mohamed Super Dumbuya</span>
                 </div>
-                <div className="flex gap-12">
+                <div className="flex flex-wrap justify-center gap-x-8 gap-y-4 md:gap-x-12">
                    {[
                      { name: 'Twitter', url: 'https://twitter.com/msdumbuya' },
                      { name: 'Github', url: 'https://github.com/msdumbuya' },
-                     { name: 'LinkedIn', url: 'https://linkedin.com/in/msdumbuya' }
+                     { name: 'LinkedIn', url: 'https://www.linkedin.com/in/mohamed-super-dumbuya/' },
+                     { name: 'Facebook', url: 'https://www.facebook.com/msdumbuya1475' },
+                     { name: 'Learn to Earn', url: 'https://learn2earn.mocti.gov.sl/u/mohamed-super-dumbuya' }
                    ].map(social => (
                      <a key={social.name} href={social.url} target="_blank" rel="noopener noreferrer" className={`text-[10px] font-bold uppercase tracking-widest hover:text-brand-purple transition-colors ${isDark ? 'text-white/40' : 'text-neutral-400'}`}>
                         {social.name}

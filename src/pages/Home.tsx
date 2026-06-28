@@ -142,16 +142,16 @@ const About = () => {
               Hi, I'm Mohamed Super, a frontend Software engineer with a strong foundation in crafting user-friendly and visually appealing digital educations. With a keen eye for detail and a commitment to innovation, I aim to bridge the gap between creativity and technology.
             </p>
           </div>
-          <div className="flex gap-8 pt-4">
+          <div className="flex flex-col sm:flex-row gap-4 sm:gap-8 pt-4">
             <Magnetic>
-              <a href="#contact" className={`px-12 py-4 rounded-full text-[10px] font-bold uppercase tracking-widest ${
+              <a href="#contact" className={`block text-center px-8 sm:px-12 py-4 rounded-full text-[10px] font-bold uppercase tracking-widest ${
                 isDark ? 'bg-white text-black' : 'bg-black text-white'
               }`}>
                 Hire Me
               </a>
             </Magnetic>
             <Magnetic>
-              <Link to="/about" className={`px-12 py-4 rounded-full text-[10px] font-bold uppercase tracking-widest border ${
+              <Link to="/about" className={`block text-center px-8 sm:px-12 py-4 rounded-full text-[10px] font-bold uppercase tracking-widest border ${
                 isDark ? 'border-white/10 text-white' : 'border-black/10 text-black'
               }`}>
                 Learn More
@@ -179,8 +179,8 @@ const About = () => {
 const Education = () => {
   const { isDark } = useContext(ThemeContext);
   return (
-    <section id="education" className="py-40 px-8 md:px-24 border-t border-white/5 bg-black/20">
-      <div className="max-w-7xl mx-auto space-y-32">
+    <section id="education" className="py-20 sm:py-40 px-4 sm:px-8 md:px-24 border-t border-white/5 bg-black/20">
+      <div className="max-w-7xl mx-auto space-y-16 sm:space-y-32">
         <div className="text-center">
            <h2 className="text-5xl md:text-7xl font-display font-medium text-brand-purple tracking-tight">
              Education
@@ -189,44 +189,44 @@ const Education = () => {
         </div>
         
         <div className="relative max-w-6xl mx-auto">
-          {/* Vertical central line */}
-          <div className="absolute left-[20px] md:left-1/2 md:-translate-x-1/2 top-0 bottom-0 w-[4px] bg-brand-purple/30 rounded-full" />
+          {/* Vertical central line - aligned to left on mobile and centered on desktop */}
+          <div className="absolute left-[30px] md:left-1/2 md:-translate-x-1/2 top-0 bottom-0 w-[4px] bg-brand-purple/30 rounded-full" />
           
-          <div className="space-y-24 relative">
+          <div className="space-y-16 sm:space-y-24 relative">
             {EDUCATION.map((edu, idx) => (
               <div key={idx} className={`relative flex items-center ${idx % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} flex-row`}>
                 
-                {/* Timeline Dot */}
-                <div className={`absolute left-[20px] md:left-1/2 md:-translate-x-1/2 w-12 h-12 rounded-full bg-brand-purple border-[6px] ${isDark ? 'border-[#0a0a0c]' : 'border-white'} z-20 shadow-[0_0_20px_rgba(46,138,86,0.5)]`} />
+                {/* Timeline Dot - scaled down on mobile and perfectly centered with vertical line */}
+                <div className={`absolute left-[16px] md:left-1/2 md:-translate-x-1/2 w-8 h-8 md:w-12 md:h-12 rounded-full bg-brand-purple border-[4px] md:border-[6px] ${isDark ? 'border-[#0a0a0c]' : 'border-white'} z-20 shadow-[0_0_20px_rgba(46,138,86,0.5)]`} />
                 
-                {/* Content Card */}
-                <div className={`w-full md:w-[48%] pl-20 md:pl-0 ${idx % 2 === 0 ? 'md:pr-16' : 'md:pl-16'}`}>
+                {/* Content Card - optimized paddings and spacing on narrow screens */}
+                <div className={`w-full md:w-[48%] pl-16 sm:pl-20 md:pl-0 ${idx % 2 === 0 ? 'md:pr-16' : 'md:pl-16'}`}>
                   <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.8, delay: idx * 0.1 }}
-                    className={`p-10 rounded-[16px] border transition-all duration-500 relative group hover:shadow-[0_0_40px_rgba(46,138,86,0.1)] ${
+                    className={`p-5 sm:p-8 md:p-10 rounded-[16px] border transition-all duration-500 relative group hover:shadow-[0_0_40px_rgba(46,138,86,0.1)] ${
                       isDark 
                         ? 'bg-[#0a0a0c]/80 backdrop-blur-sm border-white/10 hover:border-brand-purple/50' 
                         : 'bg-white border-black/5 shadow-2xl hover:border-brand-purple/50'
                     }`}
                   >
-                    <div className="inline-block border-b-2 border-brand-purple mb-6">
+                    <div className="inline-block border-b-2 border-brand-purple mb-4 sm:mb-6">
                       <span className={`text-sm font-bold font-mono tracking-wider ${isDark ? 'text-white' : 'text-black'}`}>
                         {edu.period}
                       </span>
                     </div>
                     
-                    <h4 className="text-2xl md:text-3xl font-display font-bold text-brand-purple mb-4 leading-tight">
+                    <h4 className="text-xl sm:text-2xl md:text-3xl font-display font-bold text-brand-purple mb-3 sm:mb-4 leading-tight">
                       {edu.title}
                     </h4>
                     
-                    <p className={`text-xl font-bold mb-6 ${isDark ? 'text-white' : 'text-black'}`}>
+                    <p className={`text-lg sm:text-xl font-bold mb-4 sm:mb-6 ${isDark ? 'text-white' : 'text-black'}`}>
                       {edu.institution}
                     </p>
                     
-                    <p className={`text-base leading-relaxed ${isDark ? 'text-neutral-400' : 'text-neutral-500'}`}>
+                    <p className={`text-sm sm:text-base leading-relaxed ${isDark ? 'text-neutral-400' : 'text-neutral-500'}`}>
                       {edu.description}
                     </p>
                   </motion.div>
