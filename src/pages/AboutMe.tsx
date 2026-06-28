@@ -106,11 +106,11 @@ const AboutMe = () => {
                 My journey in tech has been fueled by a passion for solving real-world problems and empowering individuals through accessible, user-centered digital solutions.
               </p>
             </div>
-            <div className="flex flex-wrap gap-8">
-               <a href="/resume.pdf" className={`px-10 py-4 rounded-full text-[11px] font-bold uppercase tracking-widest ${isDark ? 'bg-white text-black' : 'bg-black text-white shadow-2xl'}`}>
+            <div className="flex flex-col sm:flex-row gap-4 sm:gap-8 pt-4 w-full sm:w-auto">
+               <a href="/resume.pdf" className={`block text-center px-8 sm:px-10 py-4 rounded-full text-[11px] font-bold uppercase tracking-widest ${isDark ? 'bg-white text-black' : 'bg-black text-white shadow-2xl'}`}>
                   Download Resume
                </a>
-               <a href="#contact" className={`px-10 py-4 rounded-full text-[11px] font-bold uppercase tracking-widest border backdrop-blur-md ${isDark ? 'border-white/10 text-white bg-white/5' : 'border-black/10 text-black bg-black/5'}`}>
+               <a href="#contact" className={`block text-center px-8 sm:px-10 py-4 rounded-full text-[11px] font-bold uppercase tracking-widest border backdrop-blur-md ${isDark ? 'border-white/10 text-white bg-white/5' : 'border-black/10 text-black bg-black/5'}`}>
                   Let's Work Together
                </a>
             </div>

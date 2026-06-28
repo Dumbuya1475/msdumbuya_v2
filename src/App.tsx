@@ -1,5 +1,5 @@
 import { motion, useScroll, useTransform, useSpring, AnimatePresence } from "motion/react";
-import { Moon, Sun } from "lucide-react";
+import { Moon, Sun, Menu, X } from "lucide-react";
 import React, { useState, useEffect, useRef, createContext, useContext } from "react";
 import { BrowserRouter as Router, Routes, Route, useNavigate, useLocation } from "react-router-dom";
 import Lenis from "lenis";
@@ -144,6 +144,7 @@ const Nav = () => {
   const { isDark, toggleTheme } = useContext(ThemeContext);
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState('hero');
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -178,6 +179,7 @@ const Nav = () => {
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
+    setIsMobileMenuOpen(false);
     if (href.startsWith('/')) {
       navigate(href);
       return;
@@ -197,62 +199,108 @@ const Nav = () => {
   };
 
   return (
-    <motion.nav 
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-500 py-6 ${
-        isScrolled ? (isDark ? 'py-4 glass-dark border-b border-white/5' : 'py-4 bg-white/90 backdrop-blur-md border-b border-black/5') : 'bg-transparent'
-      }`}
-    >
-      <div className="max-w-7xl mx-auto px-8 flex justify-between items-center">
-        <a href="#hero" onClick={(e) => handleNavClick(e, '#hero')} className="relative z-10 flex items-center gap-3">
-          <div className={`px-4 h-10 rounded-full flex items-center justify-center text-xs font-bold tracking-wider transition-all duration-500 scale-110 lowercase ${
-            isDark ? 'bg-white text-black' : 'bg-black text-white'
-          }`}>
-            msdumbuya
-          </div>
-        </a>
+    <>
+      <motion.nav 
+        initial={{ y: -100 }}
+        animate={{ y: 0 }}
+        className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-500 py-4 sm:py-6 ${
+          isScrolled ? (isDark ? 'glass-dark border-b border-white/5' : 'bg-white/90 backdrop-blur-md border-b border-black/5') : 'bg-transparent'
+        }`}
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-8 flex justify-between items-center">
+          <a href="#hero" onClick={(e) => handleNavClick(e, '#hero')} className="relative z-10 flex items-center gap-3">
+            <div className={`px-3 sm:px-4 h-9 sm:h-10 rounded-full flex items-center justify-center text-[10px] sm:text-xs font-bold tracking-wider transition-all duration-500 lowercase ${
+              isDark ? 'bg-white text-black' : 'bg-black text-white'
+            }`}>
+              msdumbuya
+            </div>
+          </a>
 
-        <div className={`hidden md:flex items-center px-4 py-1 rounded-full border transition-all duration-500 ${
-          isDark ? 'glass-dark border-white/5' : 'bg-white/80 backdrop-blur-md border-black/5 shadow-sm'
-        }`}>
-          <div className="flex gap-1 items-center">
-            {navLinks.map((link) => (
-              <a
-                key={link.name}
-                href={link.href}
-                onClick={(e) => handleNavClick(e, link.href)}
-                className={`relative px-4 py-2 text-[9px] font-bold uppercase tracking-widest transition-colors group ${
-                  (location.pathname === '/' && activeSection === link.id) || (location.pathname === link.href)
-                    ? (isDark ? 'text-black' : 'text-white')
-                    : (isDark ? 'text-white/60 hover:text-white' : 'text-black/60 hover:text-black')
-                }`}
-              >
-                <span className="relative z-10">{link.name}</span>
-                {((location.pathname === '/' && activeSection === link.id) || (location.pathname === link.href)) && (
-                  <motion.div
-                    layoutId="nav-pill"
-                    className={`absolute inset-0 rounded-full -z-0 ${isDark ? 'bg-white' : 'bg-black'}`}
-                    transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
-                  />
-                )}
-              </a>
-            ))}
+          <div className={`hidden md:flex items-center px-4 py-1 rounded-full border transition-all duration-500 ${
+            isDark ? 'glass-dark border-white/5' : 'bg-white/80 backdrop-blur-md border-black/5 shadow-sm'
+          }`}>
+            <div className="flex gap-1 items-center">
+              {navLinks.map((link) => (
+                <a
+                  key={link.name}
+                  href={link.href}
+                  onClick={(e) => handleNavClick(e, link.href)}
+                  className={`relative px-4 py-2 text-[9px] font-bold uppercase tracking-widest transition-colors group ${
+                    (location.pathname === '/' && activeSection === link.id) || (location.pathname === link.href)
+                      ? (isDark ? 'text-black' : 'text-white')
+                      : (isDark ? 'text-white/60 hover:text-white' : 'text-black/60 hover:text-black')
+                  }`}
+                >
+                  <span className="relative z-10">{link.name}</span>
+                  {((location.pathname === '/' && activeSection === link.id) || (location.pathname === link.href)) && (
+                    <motion.div
+                      layoutId="nav-pill"
+                      className={`absolute inset-0 rounded-full -z-0 ${isDark ? 'bg-white' : 'bg-black'}`}
+                      transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                    />
+                  )}
+                </a>
+              ))}
+            </div>
+          </div>
+
+          <div className="flex items-center gap-2 sm:gap-4 z-10">
+            <button 
+              onClick={toggleTheme}
+              className={`w-9 h-9 sm:w-10 sm:h-10 rounded-full flex items-center justify-center border transition-all duration-500 ${
+                isDark ? 'border-white/10 text-white hover:bg-white/10' : 'border-black/10 text-black hover:bg-black/5'
+              }`}
+            >
+              {isDark ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
+            </button>
+
+            {/* Hamburger Button for Mobile */}
+            <button
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className={`md:hidden w-9 h-9 sm:w-10 sm:h-10 rounded-full flex items-center justify-center border transition-all duration-500 ${
+                isDark ? 'border-white/10 text-white hover:bg-white/10 bg-white/5' : 'border-black/10 text-black hover:bg-black/5 bg-black/5'
+              }`}
+              aria-label="Toggle Menu"
+            >
+              {isMobileMenuOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
+            </button>
           </div>
         </div>
+      </motion.nav>
 
-        <div className="flex items-center gap-4">
-          <button 
-            onClick={toggleTheme}
-            className={`w-10 h-10 rounded-full flex items-center justify-center border transition-all duration-500 ${
-              isDark ? 'border-white/10 text-white hover:bg-white/10' : 'border-black/10 text-black hover:bg-black/5'
+      {/* Mobile Drawer Overlay */}
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.3 }}
+            className={`fixed inset-0 z-[99] md:hidden pt-28 px-6 flex flex-col gap-6 ${
+              isDark ? 'bg-[#0a0a0c]/98 backdrop-blur-lg' : 'bg-white/98 backdrop-blur-lg'
             }`}
           >
-            {isDark ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
-          </button>
-        </div>
-      </div>
-    </motion.nav>
+            <div className="flex flex-col gap-4 mt-8">
+              {navLinks.map((link, idx) => (
+                <motion.a
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: idx * 0.05 }}
+                  key={link.name}
+                  href={link.href}
+                  onClick={(e) => handleNavClick(e, link.href)}
+                  className={`text-2xl font-display font-medium tracking-tight py-3 border-b ${
+                    isDark ? 'border-white/5 text-white/80 hover:text-white' : 'border-black/5 text-black/80 hover:text-black'
+                  }`}
+                >
+                  {link.name}
+                </motion.a>
+              ))}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
   );
 };
 
