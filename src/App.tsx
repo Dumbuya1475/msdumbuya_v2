@@ -198,10 +198,10 @@ const Nav = () => {
     >
       <div className="max-w-7xl mx-auto px-8 flex justify-between items-center">
         <a href="#hero" onClick={(e) => handleNavClick(e, '#hero')} className="relative z-10 flex items-center gap-3">
-          <div className={`w-10 h-10 rounded-full flex items-center justify-center text-xs font-bold tracking-widest transition-all duration-500 scale-110 ${
+          <div className={`px-4 h-10 rounded-full flex items-center justify-center text-xs font-bold tracking-wider transition-all duration-500 scale-110 lowercase ${
             isDark ? 'bg-white text-black' : 'bg-black text-white'
           }`}>
-            MSD
+            msdumbuya
           </div>
         </a>
 
@@ -318,7 +318,7 @@ export default function App() {
           <footer className={`py-20 px-8 border-t transition-colors duration-500 ${isDark ? 'border-white/5 bg-[#0a0a0c]' : 'border-black/5 bg-white'}`}>
              <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-12">
                 <div className="flex items-center gap-4">
-                   <div className={`w-10 h-10 rounded-full flex items-center justify-center text-[10px] font-bold ${isDark ? 'bg-white text-black' : 'bg-black text-white'}`}>MSD</div>
+                   <div className={`px-4 h-10 rounded-full flex items-center justify-center text-[10px] font-bold lowercase ${isDark ? 'bg-white text-black' : 'bg-black text-white'}`}>msdumbuya</div>
                    <span className={`text-[10px] font-bold uppercase tracking-widest ${isDark ? 'text-white/40' : 'text-neutral-400'}`}>© 2026 Mohamed Super Dumbuya</span>
                 </div>
                 <div className="flex gap-12">
