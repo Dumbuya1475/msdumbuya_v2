@@ -78,8 +78,16 @@ export const SKILL_CATEGORIES: SkillCategory[] = [
 ];
 
 export const EDUCATION = [
+  /*
   {
     title: "BSc in Software Engineering",
+    institution: "Limkokwing University Sierra Leone",
+    description: "Started my university journey in 2026, focusing on deepening my theoretical knowledge and practical application of software engineering principles in a global academic environment.",
+    period: "2026 - Present"
+  },
+  */
+  {
+    title: "Diploma in Information Technology",
     institution: "Limkokwing University Sierra Leone",
     description: "Started my university journey in 2026, focusing on deepening my theoretical knowledge and practical application of software engineering principles in a global academic environment.",
     period: "2026 - Present"
