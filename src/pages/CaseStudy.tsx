@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { motion } from "motion/react";
 import { ThemeContext } from "../App";
@@ -18,7 +18,8 @@ const PROJECTS_DETAIL = {
       "Mentor connectivity forum"
     ],
     stack: ["React", "Firebase", "Tailwind CSS"],
-    link: "https://uniguide-b996d.web.app/"
+    link: "https://uniguide-b996d.web.app/",
+    image: "/images/uniguide.jpeg"
   },
   "trackclass": {
     title: "TrackClass",
@@ -33,7 +34,8 @@ const PROJECTS_DETAIL = {
       "Early warning system for attendance risks"
     ],
     stack: ["Next.js", "Firebase", "Geofencing API"],
-    link: "https://trackclass.vercel.app/"
+    link: "https://trackclass.vercel.app/",
+    image: "https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&q=80&w=1200"
   },
   "treeventx": {
     title: "TreeventX",
@@ -48,7 +50,8 @@ const PROJECTS_DETAIL = {
       "AI-powered event promotion tools"
     ],
     stack: ["React", "Node.js", "PostgreSQL"],
-    link: "https://treeventx.vercel.app/"
+    link: "https://treeventx.vercel.app/",
+    image: "https://images.unsplash.com/photo-1540575861501-7ad0582371f1?auto=format&fit=crop&q=80&w=1200"
   },
   "nourishwise": {
     title: "NourishWise",
@@ -63,7 +66,8 @@ const PROJECTS_DETAIL = {
       "Smart food rating system"
     ],
     stack: ["Python", "JavaScript", "REST API"],
-    link: "https://nourishwise.vercel.app/"
+    link: "https://nourishwise.vercel.app/",
+    image: "https://images.unsplash.com/photo-1490818387583-1baba5e638af?auto=format&fit=crop&q=80&w=1200"
   }
 };
 
@@ -71,6 +75,7 @@ const CaseStudy = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const { isDark } = useContext(ThemeContext);
+  const [imageError, setImageError] = useState(false);
   const project = PROJECTS_DETAIL[id as keyof typeof PROJECTS_DETAIL];
 
   if (!project) {
@@ -83,10 +88,10 @@ const CaseStudy = () => {
   }
 
   return (
-    <div className={`min-h-screen pt-32 pb-40 px-8 ${isDark ? 'text-white' : 'text-black'}`}>
-      <div className="max-w-4xl mx-auto space-y-24">
+    <div className={`min-h-screen pt-24 sm:pt-32 pb-24 sm:pb-40 px-4 sm:px-8 ${isDark ? 'text-white' : 'text-black'}`}>
+      <div className="max-w-4xl mx-auto space-y-16 sm:space-y-24">
         {/* Nav */}
-        <button 
+        <button
           onClick={() => navigate('/')}
           className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest opacity-40 hover:opacity-100 transition-opacity"
         >
@@ -99,25 +104,34 @@ const CaseStudy = () => {
             <span className={`text-[10px] font-bold uppercase tracking-[0.4em] ${isDark ? 'text-brand-purple' : 'text-neutral-400'}`}>
               Case Study
             </span>
-            <h1 className="text-6xl md:text-9xl font-display font-medium tracking-tighter">
+            <h1 className="text-4xl sm:text-6xl md:text-9xl font-display font-medium tracking-tighter">
               {project.title}
             </h1>
           </div>
-          <p className="text-2xl font-display italic opacity-60 max-w-2xl">
+          <p className="text-lg sm:text-2xl font-display italic opacity-60 max-w-2xl">
             {project.subtitle}
           </p>
         </div>
 
         {/* Visual Header */}
-        <div className={`aspect-video rounded-[32px] flex items-center justify-center p-8 ${isDark ? 'bg-white/5 border border-white/5' : 'bg-neutral-50 border border-black/5'}`}>
-           <div className={`w-full h-full rounded-[24px] shadow-2xl flex items-center justify-center ${isDark ? 'bg-neutral-900' : 'bg-white'}`}>
-             <Laptop className={`w-40 h-40 opacity-20 ${isDark ? 'text-white' : 'text-black'}`} />
-           </div>
+        <div className={`aspect-video rounded-[32px] flex items-center justify-center p-3 sm:p-8 ${isDark ? 'bg-white/5 border border-white/5' : 'bg-neutral-50 border border-black/5'}`}>
+          <div className={`w-full h-full rounded-[24px] shadow-2xl overflow-hidden flex items-center justify-center ${isDark ? 'bg-neutral-900' : 'bg-white'}`}>
+            {project.image && !imageError ? (
+              <img
+                src={project.image}
+                alt={project.title}
+                className="w-full h-full object-cover"
+                onError={() => setImageError(true)}
+              />
+            ) : (
+              <Laptop className={`w-20 h-20 sm:w-40 sm:h-40 opacity-20 ${isDark ? 'text-white' : 'text-black'}`} />
+            )}
+          </div>
         </div>
 
         {/* Detail Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-20">
-          <div className="md:col-span-8 space-y-20">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-20">
+          <div className="lg:col-span-8 space-y-12 sm:space-y-20">
             <section className="space-y-6">
               <h2 className="text-3xl font-display italic">Overview</h2>
               <p className={`text-lg leading-relaxed ${isDark ? 'text-white/60' : 'text-neutral-500'}`}>
@@ -140,8 +154,8 @@ const CaseStudy = () => {
             </section>
           </div>
 
-          <div className="md:col-span-4">
-            <div className={`sticky top-32 p-8 rounded-[32px] border ${isDark ? 'bg-white/5 border-white/5' : 'bg-neutral-50 border-black/5'} space-y-10`}>
+          <div className="lg:col-span-4">
+            <div className={`lg:sticky lg:top-32 p-6 sm:p-8 rounded-[32px] border ${isDark ? 'bg-white/5 border-white/5' : 'bg-neutral-50 border-black/5'} space-y-8 sm:space-y-10`}>
               <div className="space-y-4">
                 <p className="text-[9px] font-bold uppercase tracking-widest opacity-40">Tech Stack</p>
                 <div className="flex flex-wrap gap-2">
@@ -166,13 +180,12 @@ const CaseStudy = () => {
               </div>
 
               <div className="pt-4">
-                <a 
-                  href={project.link} 
-                  target="_blank" 
+                <a
+                  href={project.link}
+                  target="_blank"
                   rel="noreferrer"
-                  className={`flex items-center justify-between w-full px-6 py-4 rounded-xl text-[10px] font-bold uppercase tracking-widest transition-all ${
-                    isDark ? 'bg-white text-black hover:scale-[1.02]' : 'bg-black text-white hover:scale-[1.02]'
-                  }`}
+                  className={`flex items-center justify-between w-full px-6 py-4 rounded-xl text-[10px] font-bold uppercase tracking-widest transition-all ${isDark ? 'bg-white text-black hover:scale-[1.02]' : 'bg-black text-white hover:scale-[1.02]'
+                    }`}
                 >
                   Live Demo <ExternalLink className="w-4 h-4" />
                 </a>

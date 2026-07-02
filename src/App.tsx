@@ -9,7 +9,7 @@ import CaseStudy from "./pages/CaseStudy";
 import MoreProjects from "./pages/MoreProjects";
 import Blog from "./pages/Blog";
 import BlogPost from "./pages/BlogPost";
-import Loader from "./components/Loader"; 
+import Loader from "./components/Loader";
 
 // --- Types ---
 
@@ -38,7 +38,7 @@ export const PROJECTS: Project[] = [
     description: "A platform designed to guide students in selecting their career paths with detailed insights into courses, jobs, and skills.",
     tags: ["React", "Firebase", "Tailwind CSS"],
     link: "/project/uniguide",
-    image: "https://images.unsplash.com/photo-1523240715630-3987502f5283?auto=format&fit=crop&q=80&w=1200",
+    image: "/images/uniguide.jpeg",
     percentage: "95%"
   },
   {
@@ -110,31 +110,31 @@ export const EDUCATION = [
 
 export const ThemeContext = createContext<{ isDark: boolean; toggleTheme: () => void }>({
   isDark: true,
-  toggleTheme: () => {},
+  toggleTheme: () => { },
 });
 
 // --- Components ---
 
 const Background = () => {
   const { isDark } = useContext(ThemeContext);
-  
+
   return (
     <div className="fixed inset-0 -z-10 overflow-hidden pointer-events-none">
       <div className={`absolute inset-0 transition-colors duration-1000 ${isDark ? 'bg-[#0a0a0c]' : 'bg-[#f8f9fa]'}`} />
-      
-      <motion.div 
+
+      <motion.div
         animate={{ scale: [1, 1.2, 1], x: [0, 50, 0], y: [0, 30, 0] }}
         transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
         className="absolute top-[-10%] right-[-10%] w-[60%] aspect-square rounded-full bg-brand-blue/10 blur-[120px]"
       />
-      <motion.div 
+      <motion.div
         animate={{ scale: [1, 1.3, 1], x: [0, -40, 0], y: [0, -60, 0] }}
         transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
         className="absolute bottom-[-20%] left-[-10%] w-[70%] aspect-square rounded-full bg-brand-purple/10 blur-[150px]"
       />
-      
-      <div className={`absolute inset-0 opacity-[0.03] ${isDark ? 'invert' : ''}`} 
-        style={{ backgroundImage: 'radial-gradient(circle, #000 1px, transparent 1px)', backgroundSize: '40px 40px' }} 
+
+      <div className={`absolute inset-0 opacity-[0.03] ${isDark ? 'invert' : ''}`}
+        style={{ backgroundImage: 'radial-gradient(circle, #000 1px, transparent 1px)', backgroundSize: '40px 40px' }}
       />
     </div>
   );
@@ -200,36 +200,32 @@ const Nav = () => {
 
   return (
     <>
-      <motion.nav 
+      <motion.nav
         initial={{ y: -100 }}
         animate={{ y: 0 }}
-        className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-500 py-4 sm:py-6 ${
-          isScrolled ? (isDark ? 'glass-dark border-b border-white/5' : 'bg-white/90 backdrop-blur-md border-b border-black/5') : 'bg-transparent'
-        }`}
+        className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-500 py-4 sm:py-6 ${isScrolled ? (isDark ? 'glass-dark border-b border-white/5' : 'bg-white/90 backdrop-blur-md border-b border-black/5') : 'bg-transparent'
+          }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-8 flex justify-between items-center">
           <a href="#hero" onClick={(e) => handleNavClick(e, '#hero')} className="relative z-10 flex items-center gap-3">
-            <div className={`px-3 sm:px-4 h-9 sm:h-10 rounded-full flex items-center justify-center text-[10px] sm:text-xs font-bold tracking-wider transition-all duration-500 lowercase ${
-              isDark ? 'bg-white text-black' : 'bg-black text-white'
-            }`}>
+            <div className={`px-3 sm:px-4 h-9 sm:h-10 rounded-full flex items-center justify-center text-[10px] sm:text-xs font-bold tracking-wider transition-all duration-500 lowercase ${isDark ? 'bg-white text-black' : 'bg-black text-white'
+              }`}>
               msdumbuya
             </div>
           </a>
 
-          <div className={`hidden md:flex items-center px-4 py-1 rounded-full border transition-all duration-500 ${
-            isDark ? 'glass-dark border-white/5' : 'bg-white/80 backdrop-blur-md border-black/5 shadow-sm'
-          }`}>
+          <div className={`hidden md:flex items-center px-4 py-1 rounded-full border transition-all duration-500 ${isDark ? 'glass-dark border-white/5' : 'bg-white/80 backdrop-blur-md border-black/5 shadow-sm'
+            }`}>
             <div className="flex gap-1 items-center">
               {navLinks.map((link) => (
                 <a
                   key={link.name}
                   href={link.href}
                   onClick={(e) => handleNavClick(e, link.href)}
-                  className={`relative px-4 py-2 text-[9px] font-bold uppercase tracking-widest transition-colors group ${
-                    (location.pathname === '/' && activeSection === link.id) || (location.pathname === link.href)
-                      ? (isDark ? 'text-black' : 'text-white')
-                      : (isDark ? 'text-white/60 hover:text-white' : 'text-black/60 hover:text-black')
-                  }`}
+                  className={`relative px-4 py-2 text-[9px] font-bold uppercase tracking-widest transition-colors group ${(location.pathname === '/' && activeSection === link.id) || (location.pathname === link.href)
+                    ? (isDark ? 'text-black' : 'text-white')
+                    : (isDark ? 'text-white/60 hover:text-white' : 'text-black/60 hover:text-black')
+                    }`}
                 >
                   <span className="relative z-10">{link.name}</span>
                   {((location.pathname === '/' && activeSection === link.id) || (location.pathname === link.href)) && (
@@ -245,11 +241,10 @@ const Nav = () => {
           </div>
 
           <div className="flex items-center gap-2 sm:gap-4 z-10">
-            <button 
+            <button
               onClick={toggleTheme}
-              className={`w-9 h-9 sm:w-10 sm:h-10 rounded-full flex items-center justify-center border transition-all duration-500 ${
-                isDark ? 'border-white/10 text-white hover:bg-white/10' : 'border-black/10 text-black hover:bg-black/5'
-              }`}
+              className={`w-9 h-9 sm:w-10 sm:h-10 rounded-full flex items-center justify-center border transition-all duration-500 ${isDark ? 'border-white/10 text-white hover:bg-white/10' : 'border-black/10 text-black hover:bg-black/5'
+                }`}
             >
               {isDark ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
             </button>
@@ -257,9 +252,8 @@ const Nav = () => {
             {/* Hamburger Button for Mobile */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className={`md:hidden w-9 h-9 sm:w-10 sm:h-10 rounded-full flex items-center justify-center border transition-all duration-500 ${
-                isDark ? 'border-white/10 text-white hover:bg-white/10 bg-white/5' : 'border-black/10 text-black hover:bg-black/5 bg-black/5'
-              }`}
+              className={`md:hidden w-9 h-9 sm:w-10 sm:h-10 rounded-full flex items-center justify-center border transition-all duration-500 ${isDark ? 'border-white/10 text-white hover:bg-white/10 bg-white/5' : 'border-black/10 text-black hover:bg-black/5 bg-black/5'
+                }`}
               aria-label="Toggle Menu"
             >
               {isMobileMenuOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
@@ -276,9 +270,8 @@ const Nav = () => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.3 }}
-            className={`fixed inset-0 z-[99] md:hidden pt-28 px-6 flex flex-col gap-6 ${
-              isDark ? 'bg-[#0a0a0c]/98 backdrop-blur-lg' : 'bg-white/98 backdrop-blur-lg'
-            }`}
+            className={`fixed inset-0 z-[99] md:hidden pt-28 px-6 flex flex-col gap-6 ${isDark ? 'bg-[#0a0a0c]/98 backdrop-blur-lg' : 'bg-white/98 backdrop-blur-lg'
+              }`}
           >
             <div className="flex flex-col gap-4 mt-8">
               {navLinks.map((link, idx) => (
@@ -289,9 +282,8 @@ const Nav = () => {
                   key={link.name}
                   href={link.href}
                   onClick={(e) => handleNavClick(e, link.href)}
-                  className={`text-2xl font-display font-medium tracking-tight py-3 border-b ${
-                    isDark ? 'border-white/5 text-white/80 hover:text-white' : 'border-black/5 text-black/80 hover:text-black'
-                  }`}
+                  className={`text-2xl font-display font-medium tracking-tight py-3 border-b ${isDark ? 'border-white/5 text-white/80 hover:text-white' : 'border-black/5 text-black/80 hover:text-black'
+                    }`}
                 >
                   {link.name}
                 </motion.a>
@@ -352,12 +344,12 @@ export default function App() {
         <AnimatePresence mode="wait">
           {isLoading && <Loader isDark={isDark} onComplete={() => setIsLoading(false)} />}
         </AnimatePresence>
-        
+
         <div className={`min-h-screen font-sans selection:bg-brand-purple selection:text-white transition-colors duration-1000 ${isDark ? 'dark bg-[#0a0a0c]' : 'bg-[#f8f9fa]'}`}>
           <Background />
           <Nav />
           <ScrollToTop />
-          
+
           <main className="relative z-10">
             <AnimatePresence mode="wait">
               <Routes>
@@ -372,25 +364,25 @@ export default function App() {
           </main>
 
           <footer className={`py-20 px-8 border-t transition-colors duration-500 ${isDark ? 'border-white/5 bg-[#0a0a0c]' : 'border-black/5 bg-white'}`}>
-             <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-12">
-                <div className="flex items-center gap-4">
-                   <div className={`px-4 h-10 rounded-full flex items-center justify-center text-[10px] font-bold lowercase ${isDark ? 'bg-white text-black' : 'bg-black text-white'}`}>msdumbuya</div>
-                   <span className={`text-[10px] font-bold uppercase tracking-widest ${isDark ? 'text-white/40' : 'text-neutral-400'}`}>© 2026 Mohamed Super Dumbuya</span>
-                </div>
-                <div className="flex flex-wrap justify-center gap-x-8 gap-y-4 md:gap-x-12">
-                   {[
-                     { name: 'Twitter', url: 'https://twitter.com/msdumbuya' },
-                     { name: 'Github', url: 'https://github.com/msdumbuya' },
-                     { name: 'LinkedIn', url: 'https://www.linkedin.com/in/mohamed-super-dumbuya/' },
-                     { name: 'Facebook', url: 'https://www.facebook.com/msdumbuya1475' },
-                     { name: 'Learn to Earn', url: 'https://learn2earn.mocti.gov.sl/u/mohamed-super-dumbuya' }
-                   ].map(social => (
-                     <a key={social.name} href={social.url} target="_blank" rel="noopener noreferrer" className={`text-[10px] font-bold uppercase tracking-widest hover:text-brand-purple transition-colors ${isDark ? 'text-white/40' : 'text-neutral-400'}`}>
-                        {social.name}
-                     </a>
-                   ))}
-                </div>
-             </div>
+            <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-12">
+              <div className="flex items-center gap-4">
+                <div className={`px-4 h-10 rounded-full flex items-center justify-center text-[10px] font-bold lowercase ${isDark ? 'bg-white text-black' : 'bg-black text-white'}`}>msdumbuya</div>
+                <span className={`text-[10px] font-bold uppercase tracking-widest ${isDark ? 'text-white/40' : 'text-neutral-400'}`}>© 2026 Mohamed Super Dumbuya</span>
+              </div>
+              <div className="flex flex-wrap justify-center gap-x-8 gap-y-4 md:gap-x-12">
+                {[
+                  { name: 'Twitter', url: 'https://twitter.com/msdumbuya' },
+                  { name: 'Github', url: 'https://github.com/msdumbuya' },
+                  { name: 'LinkedIn', url: 'https://www.linkedin.com/in/mohamed-super-dumbuya/' },
+                  { name: 'Facebook', url: 'https://www.facebook.com/msdumbuya1475' },
+                  { name: 'Learn to Earn', url: 'https://learn2earn.mocti.gov.sl/u/mohamed-super-dumbuya' }
+                ].map(social => (
+                  <a key={social.name} href={social.url} target="_blank" rel="noopener noreferrer" className={`text-[10px] font-bold uppercase tracking-widest hover:text-brand-purple transition-colors ${isDark ? 'text-white/40' : 'text-neutral-400'}`}>
+                    {social.name}
+                  </a>
+                ))}
+              </div>
+            </div>
           </footer>
         </div>
       </ThemeContext.Provider>

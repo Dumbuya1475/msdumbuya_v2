@@ -6,7 +6,7 @@
   --font-display: "Syne", sans-serif;
   --font-serif: "Instrument Serif", serif;
   --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
-  
+
   --color-brand-blue: #4a90e2;
   --color-brand-purple: #2e8a56;
   --color-brand-red: #ff5e5e;
@@ -17,6 +17,19 @@
     background-color: #000;
     color: #1a1a1a;
     scroll-behavior: auto;
+  }
+
+  body {
+    overflow-x: hidden;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  img {
+    display: block;
+    max-width: 100%;
   }
 }
 
@@ -45,13 +58,16 @@ html.lenis body {
   .glass {
     @apply bg-white/10 backdrop-blur-md border border-white/20;
   }
+
   .glass-dark {
     @apply bg-black/40 backdrop-blur-xl border border-white/10;
   }
+
   .text-stroke {
     -webkit-text-stroke: 1px black;
     color: transparent;
   }
+
   .dark .text-stroke {
     -webkit-text-stroke: 1px white;
   }

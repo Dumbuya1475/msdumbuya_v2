@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 
-const words = ["curiosity", "creativity", "technology", "community", "impact", "innovation"];
+const words = ["curiosity", "creativity", "technology", "community", "impact", "innovation", "msdumbuya"];
 
 const Loader = ({ onComplete, isDark }: { onComplete: () => void; isDark: boolean }) => {
   const [index, setIndex] = useState(0);
