@@ -1,17 +1,11 @@
 import React, { useContext } from "react";
-import { ThemeContext } from "../App";
-import { ArrowLeft, Laptop, ArrowRight } from "lucide-react";
+import { ThemeContext, PROJECTS } from "../App";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 import { useNavigate, Link } from "react-router-dom";
 
 const MoreProjects = () => {
   const { isDark } = useContext(ThemeContext);
   const navigate = useNavigate();
-
-  const extraProjects = [
-    { title: "Project Alpha", desc: "A creative exploration of grid systems and motion.", link: "#" },
-    { title: "Project Beta", desc: "Advanced data visualization dashboard for crypto assets.", link: "#" },
-    { title: "Project Gamma", desc: "Minimalist task management application for teams.", link: "#" }
-  ];
 
   return (
     <div className={`min-h-screen pt-32 pb-40 px-8 ${isDark ? 'text-white' : 'text-black'}`}>
@@ -35,20 +29,24 @@ const MoreProjects = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-           {extraProjects.map((p, i) => (
-             <div key={i} className={`p-12 rounded-[48px] border transition-all duration-500 group ${
+           {PROJECTS.map((p) => (
+             <div key={p.id} className={`p-6 sm:p-8 rounded-[32px] border transition-all duration-500 group ${
                isDark ? 'glass-dark border-white/5 hover:bg-white/5' : 'bg-neutral-50 border-black/5 hover:bg-white'
              }`}>
-                <div className={`w-16 h-16 rounded-2xl mb-8 flex items-center justify-center ${isDark ? 'bg-white/5' : 'bg-black/5'}`}>
-                   <Laptop className="w-8 h-8 opacity-40 group-hover:opacity-100 transition-opacity" />
+                <div className="w-full aspect-video rounded-2xl mb-8 overflow-hidden bg-black/10">
+                   <img
+                     src={p.image}
+                     alt={`${p.title} project preview`}
+                     className="w-full h-full object-cover opacity-70 group-hover:opacity-100 transition-opacity"
+                   />
                 </div>
                 <h3 className="text-2xl font-display font-medium mb-4">{p.title}</h3>
                 <p className={`text-sm leading-relaxed mb-8 ${isDark ? 'text-white/60' : 'text-neutral-500'}`}>
-                   {p.desc}
+                   {p.description}
                 </p>
-                <div className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest opacity-40 group-hover:opacity-100 transition-all">
-                   View Project <ArrowRight className="w-3 h-3" />
-                </div>
+                <Link to={p.link} className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest opacity-40 group-hover:opacity-100 transition-all">
+                  View Project <ArrowRight className="w-3 h-3" />
+                </Link>
              </div>
            ))}
         </div>

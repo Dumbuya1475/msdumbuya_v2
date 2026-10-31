@@ -42,6 +42,16 @@ export const PROJECTS: Project[] = [
     percentage: "95%"
   },
   {
+    id: "verve",
+    title: "Verve",
+    description: "A calm academic workspace for university students in Sierra Leone to create, preview, and export polished assignment cover pages.",
+    tags: ["Next.js", "Firebase", "PDF & Word Export"],
+    link: "/project/verve",
+    image: "/images/verve.png",
+    percentage: "90%"
+  },
+  
+  {
     id: "trackclass",
     title: "TrackClass",
     description: "Advanced attendance management system using geofencing and rotating tokens to ensure academic integrity.",
@@ -65,19 +75,28 @@ export const PROJECTS: Project[] = [
     description: "A smart nutrition guide that helps you make healthier food choices with personalized insights and recommendations.",
     tags: ["JavaScript", "Python", "REST API"],
     link: "/project/nourishwise",
+        // image: "/images/nourishwise.jpeg",
     image: "https://images.unsplash.com/photo-1490818387583-1baba5e638af?auto=format&fit=crop&q=80&w=1200",
     percentage: "88%"
-  }
+  },
 ];
 
 export const SKILL_CATEGORIES: SkillCategory[] = [
   { title: "Skills", skills: ["Python", "JavaScript", "HTML5", "CSS3"] },
   { title: "Tools", skills: ["Git", "Github", "VSC"] },
   { title: "Frameworks", skills: ["ReactJS", "NextJS"] },
+  { title: "Cybersecurity (Learning)", skills: ["Kali Linux", "Nmap", "Wireshark"] },
+  { title: "Creative Tools", skills: ["Adobe Premiere Pro", "Adobe Photoshop"] },
   { title: "Others", skills: ["Ubuntu", "Terminal/CLI"] },
 ];
 
-export const EDUCATION = [
+export const TIMELINE = [
+  {
+    title: "Software Developer Intern",
+    institution: "EasySTEM — Sensebod",
+    description: "Worked on the frontend of Sensebod (sensebod.com), an education-focused project, building responsive interfaces and improving the learning product experience.",
+    period: "January 2026 - July 2026"
+  },
   /*
   {
     title: "BSc in Software Engineering",
@@ -153,7 +172,7 @@ const Nav = () => {
 
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
-      const sections = ['hero', 'about', 'education', 'skills', 'projects', 'contact'];
+      const sections = ['hero', 'about', 'timeline', 'skills', 'projects', 'contact'];
       const current = sections.find(section => {
         const el = document.getElementById(section);
         if (el) {
@@ -171,7 +190,7 @@ const Nav = () => {
   const navLinks = [
     { name: 'Home', href: '#hero', id: 'hero' },
     { name: 'About', href: '#about', id: 'about' },
-    { name: 'Education', href: '#education', id: 'education' },
+    { name: 'Timeline', href: '#timeline', id: 'timeline' },
     { name: 'Projects', href: '#projects', id: 'projects' },
     { name: 'Blog', href: '/blog', id: 'blog' },
     { name: 'Contact', href: '#contact', id: 'contact' },

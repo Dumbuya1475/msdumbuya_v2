@@ -38,12 +38,12 @@ const AboutMe = () => {
     {
       title: "Software Developer Intern",
       company: "EasySTEM",
-      period: "January 2026 - Present",
+      period: "January 2026 - July 2026",
       tasks: [
-        "Contributing to the development of educational software solutions aimed at enhancing STEM learning experiences",
-        "Collaborating with a team of developers to implement new features and improve existing functionalities",
-        "Participating in code reviews and providing constructive feedback to peers",
-        "Engaging in continuous learning to stay updated with the latest technologies and best practices in software development"
+        "Worked on the frontend of Sensebod (sensebod.com), an education-focused project",
+        "Built and refined user interfaces that made learning content easier to navigate and use",
+        "Collaborated with the team to implement responsive features and improve the product experience",
+        "Participated in code reviews and applied frontend development best practices"
       ]
     },
     {

@@ -68,6 +68,22 @@ const PROJECTS_DETAIL = {
     stack: ["Python", "JavaScript", "REST API"],
     link: "https://nourishwise.vercel.app/",
     image: "https://images.unsplash.com/photo-1490818387583-1baba5e638af?auto=format&fit=crop&q=80&w=1200"
+  },
+  "verve": {
+    title: "Verve",
+    subtitle: "A calm academic workspace for students",
+    description: "Verve helps university students in Sierra Leone create assignment cover pages that match their university and faculty requirements, then preview and export them as PDF or Word files.",
+    problem: "Students often have to recreate assignment cover pages manually, which makes it easy to miss required fields or lose time formatting documents.",
+    solution: "Verve brings the cover-page workflow into one focused editor with live preview, group assignment support, local drafts, cloud sync for signed-in users, and browser-based exports.",
+    features: [
+      "Individual and group assignment cover pages",
+      "Live preview with PDF and Word export",
+      "Offline editing with local draft persistence",
+      "Firebase authentication and cloud draft sync"
+    ],
+    stack: ["Next.js", "React", "Firebase", "TypeScript"],
+    link: "https://getverve.vercel.app/",
+    image: "/images/verve.png"
   }
 };
 
@@ -179,7 +195,7 @@ const CaseStudy = () => {
                 </ul>
               </div>
 
-              <div className="pt-4">
+              {project.link && <div className="pt-4">
                 <a
                   href={project.link}
                   target="_blank"
@@ -189,7 +205,7 @@ const CaseStudy = () => {
                 >
                   Live Demo <ExternalLink className="w-4 h-4" />
                 </a>
-              </div>
+              </div>}
             </div>
           </div>
         </div>

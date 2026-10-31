@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { motion, useScroll, useTransform } from "motion/react";
 import { Laptop, ArrowRight } from "lucide-react";
-import { ThemeContext, PROJECTS, EDUCATION, SKILL_CATEGORIES } from "../App";
+import { ThemeContext, PROJECTS, TIMELINE, SKILL_CATEGORIES } from "../App";
 import { Link } from "react-router-dom";
 
 // --- Sub-components ---
@@ -172,14 +172,14 @@ const About = () => {
   );
 };
 
-const Education = () => {
+const Timeline = () => {
   const { isDark } = useContext(ThemeContext);
   return (
-    <section id="education" className="py-24 sm:py-40 px-4 sm:px-8 md:px-24 border-t border-white/5 bg-black/20">
+    <section id="timeline" className="py-24 sm:py-40 px-4 sm:px-8 md:px-24 border-t border-white/5 bg-black/20">
       <div className="max-w-7xl mx-auto space-y-16 sm:space-y-32">
         <div className="text-center">
           <h2 className="text-4xl sm:text-5xl md:text-7xl font-display font-medium text-brand-purple tracking-tight">
-            Education
+            Timeline
           </h2>
           <div className="w-full max-w-5xl mx-auto h-[2px] bg-brand-purple/40 mt-10" />
         </div>
@@ -189,7 +189,7 @@ const Education = () => {
           <div className="absolute left-[1px] md:left-1/2 md:-translate-x-1/2 top-0 bottom-0 w-[4px] bg-brand-purple/30 rounded-full" />
 
           <div className="space-y-16 sm:space-y-24 relative">
-            {EDUCATION.map((edu, idx) => (
+            {TIMELINE.map((edu, idx) => (
               <div key={idx} className={`relative flex items-center ${idx % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} flex-row`}>
 
                 {/* Timeline Dot - scaled down on mobile and perfectly centered with vertical line */}
@@ -429,7 +429,7 @@ const Home = () => {
     <>
       <Hero />
       <About />
-      <Education />
+      <Timeline />
       <Skills />
       <Projects />
       <ArticlesPreview />
