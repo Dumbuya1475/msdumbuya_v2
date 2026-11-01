@@ -84,6 +84,22 @@ const PROJECTS_DETAIL = {
     stack: ["Next.js", "React", "Firebase", "TypeScript"],
     link: "https://getverve.vercel.app/",
     image: "/images/verve.png"
+  },
+  "bloom-cafe": {
+    title: "Bloom Café",
+    subtitle: "Fresh coffee. Warm moments.",
+    description: "A cozy café website designed to turn Bloom Café's welcoming atmosphere into a clear and memorable digital experience.",
+    problem: "Neighborhood cafés need a digital presence that feels as inviting as the physical space while making the brand, offering, and atmosphere easy to understand.",
+    solution: "Bloom Café uses warm visual storytelling, focused typography, and a responsive layout to present the café as a place where passion meets precision.",
+    features: [
+      "Warm, hospitality-focused visual direction",
+      "Responsive experience across devices",
+      "Clear café storytelling and brand messaging",
+      "Focused calls to action for visitors"
+    ],
+    stack: ["React", "Responsive Design", "Tailwind CSS"],
+    link: "https://bloom-c.vercel.app/",
+    image: "https://images.unsplash.com/photo-1445116572660-236099ec97a0?auto=format&fit=crop&q=80&w=1200"
   }
 };
 

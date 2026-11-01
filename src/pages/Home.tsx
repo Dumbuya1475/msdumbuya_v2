@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { motion, useScroll, useTransform } from "motion/react";
 import { Laptop, ArrowRight } from "lucide-react";
-import { ThemeContext, PROJECTS, TIMELINE, SKILL_CATEGORIES } from "../App";
+import { ThemeContext, PROJECTS, SERVICES, TIMELINE, SKILL_CATEGORIES } from "../App";
 import { Link } from "react-router-dom";
 
 // --- Sub-components ---
@@ -135,10 +135,10 @@ const About = () => {
     <section id="about" className="py-24 sm:py-40 px-4 sm:px-8 md:px-24">
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 sm:gap-24 lg:gap-32 items-center">
         <div className="space-y-12">
-          <SectionHeading subtitle="About Me" title="Frontend Engineer with a passion." />
+          <SectionHeading subtitle="About Me" title="Software Developer creating useful digital products." />
           <div className="space-y-8">
             <p className={`text-lg sm:text-xl leading-relaxed ${isDark ? 'text-white/60' : 'text-neutral-500'}`}>
-              Hi, I'm Mohamed Super, a frontend Software engineer with a strong foundation in crafting user-friendly and visually appealing digital educations. With a keen eye for detail and a commitment to innovation, I aim to bridge the gap between creativity and technology.
+              Hi, I'm Mohamed Super, a software developer focused on creating useful, user-friendly digital products. I combine thoughtful problem-solving with clean design to help ideas become reliable experiences people can use and trust.
             </p>
           </div>
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-8 pt-4">
@@ -166,6 +166,37 @@ const About = () => {
               className="w-full h-full object-cover opacity-80 hover:opacity-100 transition-all duration-1000"
             />
           </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+const Services = () => {
+  const { isDark } = useContext(ThemeContext);
+
+  return (
+    <section id="services" className="py-24 sm:py-40 px-4 sm:px-8 md:px-24">
+      <div className="max-w-7xl mx-auto space-y-16">
+        <SectionHeading subtitle="What I Offer" title="Digital solutions that move ideas forward." />
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {SERVICES.map((service, index) => (
+            <motion.div
+              key={service.title}
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: index * 0.08 }}
+              className={`p-6 sm:p-10 rounded-[32px] border ${isDark ? 'bg-white/5 border-white/5' : 'bg-white border-black/5 shadow-sm'}`}
+            >
+              <span className="text-sm font-mono text-brand-purple">0{index + 1}</span>
+              <h3 className="mt-8 text-2xl sm:text-3xl font-display font-medium">{service.title}</h3>
+              <p className={`mt-4 text-base leading-relaxed ${isDark ? 'text-white/60' : 'text-neutral-500'}`}>
+                {service.description}
+              </p>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>
@@ -429,6 +460,7 @@ const Home = () => {
     <>
       <Hero />
       <About />
+      <Services />
       <Timeline />
       <Skills />
       <Projects />

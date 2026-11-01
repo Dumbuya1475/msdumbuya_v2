@@ -40,10 +40,10 @@ const AboutMe = () => {
       company: "EasySTEM",
       period: "January 2026 - July 2026",
       tasks: [
-        "Worked on the frontend of Sensebod (sensebod.com), an education-focused project",
+        "Worked on Sensebod (sensebod.com), an education-focused project",
         "Built and refined user interfaces that made learning content easier to navigate and use",
         "Collaborated with the team to implement responsive features and improve the product experience",
-        "Participated in code reviews and applied frontend development best practices"
+        "Participated in code reviews and applied software development best practices"
       ]
     },
     {

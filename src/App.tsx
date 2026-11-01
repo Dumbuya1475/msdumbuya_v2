@@ -79,6 +79,34 @@ export const PROJECTS: Project[] = [
     image: "https://images.unsplash.com/photo-1490818387583-1baba5e638af?auto=format&fit=crop&q=80&w=1200",
     percentage: "88%"
   },
+  {
+    id: "bloom-cafe",
+    title: "Bloom Café",
+    description: "A warm café experience designed around fresh coffee, ethical beans, and the feeling of a welcoming neighborhood space.",
+    tags: ["React", "Responsive Design", "Hospitality"],
+    link: "/project/bloom-cafe",
+    image: "https://images.unsplash.com/photo-1445116572660-236099ec97a0?auto=format&fit=crop&q=80&w=1200",
+    percentage: "90%"
+  },
+];
+
+export const SERVICES = [
+  {
+    title: "Software Development",
+    description: "Reliable digital products built around real business needs, from planning and architecture to polished delivery.",
+  },
+  {
+    title: "Business Websites",
+    description: "Professional websites that help businesses, startups, and personal brands look credible online.",
+  },
+  {
+    title: "Web App Development",
+    description: "Interactive web applications that help teams serve customers, manage workflows, and bring ideas to life.",
+  },
+  {
+    title: "Installable Web Apps",
+    description: "Web applications that work smoothly across devices and can be installed for an app-like experience.",
+  },
 ];
 
 export const SKILL_CATEGORIES: SkillCategory[] = [
@@ -94,7 +122,7 @@ export const TIMELINE = [
   {
     title: "Software Developer Intern",
     institution: "EasySTEM — Sensebod",
-    description: "Worked on the frontend of Sensebod (sensebod.com), an education-focused project, building responsive interfaces and improving the learning product experience.",
+    description: "Worked on Sensebod (sensebod.com), an education-focused project, building responsive interfaces and improving the learning product experience.",
     period: "January 2026 - July 2026"
   },
   /*
@@ -172,7 +200,7 @@ const Nav = () => {
 
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
-      const sections = ['hero', 'about', 'timeline', 'skills', 'projects', 'contact'];
+      const sections = ['hero', 'about', 'services', 'timeline', 'skills', 'projects', 'contact'];
       const current = sections.find(section => {
         const el = document.getElementById(section);
         if (el) {
@@ -190,6 +218,7 @@ const Nav = () => {
   const navLinks = [
     { name: 'Home', href: '#hero', id: 'hero' },
     { name: 'About', href: '#about', id: 'about' },
+    { name: 'Services', href: '#services', id: 'services' },
     { name: 'Timeline', href: '#timeline', id: 'timeline' },
     { name: 'Projects', href: '#projects', id: 'projects' },
     { name: 'Blog', href: '/blog', id: 'blog' },
