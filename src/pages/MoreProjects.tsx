@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { ThemeContext, PROJECTS } from "../App";
+import { FEATURED_PROJECT_IDS, ThemeContext, PROJECTS } from "../App";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { useNavigate, Link } from "react-router-dom";
 
@@ -29,7 +29,7 @@ const MoreProjects = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-           {PROJECTS.map((p) => (
+           {PROJECTS.filter((project) => !FEATURED_PROJECT_IDS.includes(project.id)).map((p) => (
              <div key={p.id} className={`p-6 sm:p-8 rounded-[32px] border transition-all duration-500 group ${
                isDark ? 'glass-dark border-white/5 hover:bg-white/5' : 'bg-neutral-50 border-black/5 hover:bg-white'
              }`}>

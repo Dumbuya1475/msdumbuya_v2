@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { motion, useScroll, useTransform } from "motion/react";
 import { Laptop, ArrowRight } from "lucide-react";
 import {
+  FEATURED_PROJECT_IDS,
   ThemeContext,
   PROJECTS,
   SERVICES,
@@ -175,7 +176,7 @@ const Hero = () => {
                     : "border-black/10 text-black hover:bg-black/5"
                 }`}
               >
-                View my Services
+                View My Services
               </a>
             </Magnetic>
           </div>
@@ -435,7 +436,7 @@ const Projects = () => {
         </div>
 
         <div className="grid grid-cols-1 gap-20 sm:gap-40">
-          {PROJECTS.map((p, idx) => (
+          {PROJECTS.filter((project) => FEATURED_PROJECT_IDS.includes(project.id)).map((p, idx) => (
             <div
               key={idx}
               className={`flex flex-col ${idx % 2 === 1 ? "lg:flex-row-reverse" : "lg:flex-row"} gap-8 sm:gap-12 lg:gap-24 items-center`}
@@ -465,9 +466,6 @@ const Projects = () => {
               </motion.div>
 
               <div className="w-full lg:w-1/2 space-y-8">
-                <span className="text-[10px] font-bold text-neutral-300 uppercase tracking-[0.3em]">
-                  {p.tags.join(" • ")}
-                </span>
                 <h3
                   className={`text-4xl sm:text-5xl lg:text-6xl font-display font-medium tracking-tight ${isDark ? "text-white" : "text-black"}`}
                 >
@@ -575,6 +573,21 @@ const ArticlesPreview = () => {
 
 const Contact = () => {
   const { isDark } = useContext(ThemeContext);
+  const [formData, setFormData] = React.useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const subject = encodeURIComponent(`Portfolio enquiry from ${formData.name}`);
+    const body = encodeURIComponent(
+      `Name: ${formData.name}\nEmail: ${formData.email}\n\n${formData.message}`,
+    );
+    window.location.href = `mailto:msdumbuya1475@email.com?subject=${subject}&body=${body}`;
+  };
+
   return (
     <section id="contact" className="py-24 sm:py-40 px-4 sm:px-8 md:px-24">
       <div className="max-w-7xl mx-auto">
@@ -630,7 +643,7 @@ const Contact = () => {
                 : "bg-neutral-50 border border-black/5"
             }`}
           >
-            <form className="space-y-10" onSubmit={(e) => e.preventDefault()}>
+            <form className="space-y-10" onSubmit={handleSubmit}>
               <div className="space-y-4">
                 <label
                   className={`text-[10px] font-bold uppercase tracking-widest ${isDark ? "text-white/40" : "text-black/40"}`}
@@ -639,6 +652,9 @@ const Contact = () => {
                 </label>
                 <input
                   type="text"
+                  value={formData.name}
+                  onChange={(event) => setFormData({ ...formData, name: event.target.value })}
+                  required
                   className={`w-full bg-transparent border-b py-4 focus:outline-none transition-colors ${
                     isDark
                       ? "border-white/10 focus:border-white text-white"
@@ -654,6 +670,9 @@ const Contact = () => {
                 </label>
                 <input
                   type="email"
+                  value={formData.email}
+                  onChange={(event) => setFormData({ ...formData, email: event.target.value })}
+                  required
                   className={`w-full bg-transparent border-b py-4 focus:outline-none transition-colors ${
                     isDark
                       ? "border-white/10 focus:border-white text-white"
@@ -669,6 +688,9 @@ const Contact = () => {
                 </label>
                 <textarea
                   rows={4}
+                  value={formData.message}
+                  onChange={(event) => setFormData({ ...formData, message: event.target.value })}
+                  required
                   className={`w-full bg-transparent border-b py-4 focus:outline-none transition-colors resize-none ${
                     isDark
                       ? "border-white/10 focus:border-white text-white"
@@ -697,11 +719,11 @@ const Home = () => {
   return (
     <>
       <Hero />
-      <About />
       <Services />
+      <Projects />
       <Timeline />
       <Skills />
-      <Projects />
+      <About />
       <ArticlesPreview />
       <Contact />
     </>

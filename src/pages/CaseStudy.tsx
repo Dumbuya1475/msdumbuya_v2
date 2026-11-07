@@ -188,17 +188,6 @@ const CaseStudy = () => {
 
           <div className="lg:col-span-4">
             <div className={`lg:sticky lg:top-32 p-6 sm:p-8 rounded-[32px] border ${isDark ? 'bg-white/5 border-white/5' : 'bg-neutral-50 border-black/5'} space-y-8 sm:space-y-10`}>
-              <div className="space-y-4">
-                <p className="text-[9px] font-bold uppercase tracking-widest opacity-40">Tech Stack</p>
-                <div className="flex flex-wrap gap-2">
-                  {project.stack.map(s => (
-                    <span key={s} className={`px-4 py-1.5 rounded-full text-[10px] font-medium ${isDark ? 'bg-white/10 text-white' : 'bg-black/5 text-black'}`}>
-                      {s}
-                    </span>
-                  ))}
-                </div>
-              </div>
-
               <div className="space-y-6">
                 <p className="text-[9px] font-bold uppercase tracking-widest opacity-40">Key Features</p>
                 <ul className="space-y-3">

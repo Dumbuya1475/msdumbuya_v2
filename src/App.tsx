@@ -90,6 +90,8 @@ export const PROJECTS: Project[] = [
   },
 ];
 
+export const FEATURED_PROJECT_IDS = ["uniguide", "verve", "bloom-cafe"];
+
 export const SERVICES = [
   {
     title: "Software Development",
@@ -108,8 +110,16 @@ export const SERVICES = [
     description: "Web applications that work smoothly across devices and can be installed for an app-like experience.",
   },
   {
-    title: "In Person Teaching",
-    description: "Offer teaching to people who want to learn coding, web development, computer fundamental and ICT in person.",
+    title: "In-Person Coding & ICT Training",
+    description: "Practical, beginner-friendly lessons in coding, web development, computer fundamentals, and ICT for individuals or small groups.",
+  },
+  {
+    title: "Technical Mentoring",
+    description: "Clear guidance for learners and early-career developers working through projects, portfolios, and their next steps in tech.",
+  },
+  {
+    title: "Digital Skills Workshops",
+    description: "Focused sessions that help schools, teams, and communities build confidence with essential digital tools and technology.",
   },
 ];
 
@@ -211,7 +221,7 @@ const Nav = () => {
 
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
-      const sections = ['hero', 'about', 'services', 'timeline', 'skills', 'projects', 'contact'];
+      const sections = ['hero', 'services', 'projects', 'timeline', 'skills', 'about', 'contact'];
       const current = sections.find(section => {
         const el = document.getElementById(section);
         if (el) {
@@ -228,10 +238,10 @@ const Nav = () => {
 
   const navLinks = [
     { name: 'Home', href: '#hero', id: 'hero' },
-    { name: 'About', href: '#about', id: 'about' },
     { name: 'Services', href: '#services', id: 'services' },
+    { name: 'Work', href: '#projects', id: 'projects' },
     { name: 'Timeline', href: '#timeline', id: 'timeline' },
-    { name: 'Projects', href: '#projects', id: 'projects' },
+    { name: 'About', href: '#about', id: 'about' },
     { name: 'Blog', href: '/blog', id: 'blog' },
     { name: 'Contact', href: '#contact', id: 'contact' },
   ];
