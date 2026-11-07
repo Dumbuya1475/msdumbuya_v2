@@ -1,12 +1,24 @@
 import React, { useContext } from "react";
 import { motion, useScroll, useTransform } from "motion/react";
 import { Laptop, ArrowRight } from "lucide-react";
-import { ThemeContext, PROJECTS, SERVICES, TIMELINE, SKILL_CATEGORIES } from "../App";
+import {
+  ThemeContext,
+  PROJECTS,
+  SERVICES,
+  TIMELINE,
+  SKILL_CATEGORIES,
+} from "../App";
 import { Link } from "react-router-dom";
 
 // --- Sub-components ---
 
-const Magnetic = ({ children, className = "" }: { children: React.ReactNode; className?: string }) => {
+const Magnetic = ({
+  children,
+  className = "",
+}: {
+  children: React.ReactNode;
+  className?: string;
+}) => {
   const ref = React.useRef<HTMLDivElement>(null);
   const [position, setPosition] = React.useState({ x: 0, y: 0 });
 
@@ -39,14 +51,26 @@ const Magnetic = ({ children, className = "" }: { children: React.ReactNode; cla
   );
 };
 
-const SectionHeading = ({ subtitle, title, centered = false }: { subtitle: string, title: string, centered?: boolean }) => {
+const SectionHeading = ({
+  subtitle,
+  title,
+  centered = false,
+}: {
+  subtitle: string;
+  title: string;
+  centered?: boolean;
+}) => {
   const { isDark } = useContext(ThemeContext);
   return (
-    <div className={`space-y-4 ${centered ? 'text-center' : ''}`}>
-      <span className={`text-[10px] font-bold uppercase tracking-[0.4em] ${isDark ? 'text-brand-purple' : 'text-neutral-400'}`}>
+    <div className={`space-y-4 ${centered ? "text-center" : ""}`}>
+      <span
+        className={`text-[10px] font-bold uppercase tracking-[0.4em] ${isDark ? "text-brand-purple" : "text-neutral-400"}`}
+      >
         {subtitle}
       </span>
-      <h2 className={`text-4xl sm:text-5xl md:text-7xl font-display font-medium tracking-tighter ${isDark ? 'text-white' : 'text-black'}`}>
+      <h2
+        className={`text-4xl sm:text-5xl md:text-7xl font-display font-medium tracking-tighter ${isDark ? "text-white" : "text-black"}`}
+      >
         {title}
       </h2>
     </div>
@@ -60,13 +84,13 @@ const Hero = () => {
   const opacity = useTransform(scrollY, [0, 800], [0.8, 0]);
 
   return (
-    <section id="hero" className="min-h-screen pt-24 sm:pt-32 pb-24 sm:pb-40 px-4 sm:px-8 relative flex items-center justify-center overflow-hidden">
+    <section
+      id="hero"
+      className="min-h-screen pt-24 sm:pt-32 pb-24 sm:pb-40 px-4 sm:px-8 relative flex items-center justify-center overflow-hidden"
+    >
       {/* Background Image with Parallax */}
       <div className="fixed inset-0 z-0 pointer-events-none">
-        <motion.div
-          style={{ y, opacity }}
-          className="w-full h-[120vh] mt-15"
-        >
+        <motion.div style={{ y, opacity }} className="w-full h-[120vh] mt-15">
           <img
             src="/images/msd.png"
             alt="Background Portrait"
@@ -74,12 +98,17 @@ const Hero = () => {
             referrerPolicy="no-referrer"
             onError={(e) => {
               const target = e.target as HTMLImageElement;
-              if (target.src !== "https://msdumbuya.vercel.app/images/img7.png") {
-                target.src = "https://msdumbuya.vercel.app/public/images/msd.png";
+              if (
+                target.src !== "https://msdumbuya.vercel.app/images/img7.png"
+              ) {
+                target.src =
+                  "https://msdumbuya.vercel.app/public/images/msd.png";
               }
             }}
           />
-          <div className={`absolute inset-0 ${isDark ? 'bg-gradient-to-b from-[#0a0a0c]/20 via-transparent to-[#0a0a0c]' : 'bg-gradient-to-b from-[#f8f9fa]/20 via-transparent to-[#f8f9fa]'}`} />
+          <div
+            className={`absolute inset-0 ${isDark ? "bg-gradient-to-b from-[#0a0a0c]/20 via-transparent to-[#0a0a0c]" : "bg-gradient-to-b from-[#f8f9fa]/20 via-transparent to-[#f8f9fa]"}`}
+          />
         </motion.div>
       </div>
 
@@ -92,34 +121,61 @@ const Hero = () => {
           className="space-y-12"
         >
           <div className="space-y-6">
-            <h1 className={`text-[36px] sm:text-[48px] md:text-[80px] lg:text-[110px] font-display font-medium leading-[0.85] tracking-tighter transition-colors duration-500 ${isDark ? 'text-white' : 'text-black'
-              }`}>
-              Hi, <br />
-              I'M <span className={isDark ? 'text-white/40' : 'text-black/50'}>MOHAMED</span> <br />
-              SUPER DUMBUYA
+            <h1
+              className={`text-[36px] sm:text-[48px] md:text-[80px] lg:text-[110px] font-display font-medium leading-[0.85] tracking-tighter transition-colors duration-500 ${
+                isDark ? "text-white" : "text-black"
+              }`}
+            >
+              {/* Hi,  */}
+              <br />
+              I'm{" "}
+              <span className={isDark ? "text-white/40" : "text-black/50"}>
+                Mohamed
+              </span>{" "}
+              <br />
+              Super Dumbuya
             </h1>
             <div className={`w-fit mx-auto  rounded-lg`}>
-              <h2 className={`text-xl px-2 py-1 md:text-2xl font-display font-medium italic ${isDark ? 'text-brand-purple bg-amber-50' : 'text-neutral-800  bg-amber-0'} `}>
-                Software Engineer & Tech Educator
+              <h2
+                className={`text-xl px-2 py-1 md:text-2xl font-display font-medium italic text-white bg-brand-purple ${isDark ? "text-brand-purple bg-amber-50" : "text-neutral-800  bg-amber-0"} `}
+              >
+                Software Engineer | EdTech Founder | Tech Educator
               </h2>
             </div>
-            <p className={`max-w-xl mx-auto text-sm sm:text-base md:text-lg leading-relaxed font-medium transition-colors duration-500 px-2 ${isDark ? 'text-white/60' : 'text-neutral-800'
-              }`}>
-              Building digital experiences & inspiring the next generation of tech leaders. Dedicated to turning ideas into innovative digital solutions.
+            <p
+              className={`max-w-xl mx-auto text-sm sm:text-base md:text-lg leading-relaxed font-medium transition-colors duration-500 px-2 ${
+                isDark ? "text-white/60" : "text-neutral-800"
+              }`}
+            >
+              Building digital experiences & inspiring the next generation of
+              tech leaders. Dedicated to turning ideas into innovative digital
+              solutions.
             </p>
           </div>
 
           <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 sm:gap-6 w-full max-w-sm sm:max-w-none mx-auto">
             <Magnetic className="w-full sm:w-auto">
-              <a href="#projects" className={`w-full sm:w-auto px-8 sm:px-10 py-4 rounded-full text-[11px] font-bold uppercase tracking-[0.2em] transition-all shadow-xl hover:scale-105 active:scale-95 text-center ${isDark ? 'bg-brand-purple text-white shadow-brand-purple/20' : 'bg-black text-white shadow-black/10'
-                }`}>
+              <a
+                href="#projects"
+                className={`w-full sm:w-auto px-8 sm:px-10 py-4 rounded-full text-[11px] font-bold uppercase tracking-[0.2em] transition-all shadow-xl hover:scale-105 active:scale-95 text-center ${
+                  isDark
+                    ? "bg-brand-purple text-white shadow-brand-purple/20"
+                    : "bg-black text-white shadow-black/10"
+                }`}
+              >
                 View My Work
               </a>
             </Magnetic>
             <Magnetic className="w-full sm:w-auto">
-              <a href="/resume.pdf" className={`w-full sm:w-auto px-8 sm:px-10 py-4 rounded-full text-[11px] font-bold uppercase tracking-[0.2em] transition-all border transition-colors text-center ${isDark ? 'border-white/20 text-white hover:bg-white/10' : 'border-black/10 text-black hover:bg-black/5'
-                }`}>
-                Download Resume
+              <a
+                href="#services"
+                className={`w-full sm:w-auto px-8 sm:px-10 py-4 rounded-full text-[11px] font-bold uppercase tracking-[0.2em] transition-all border transition-colors text-center ${
+                  isDark
+                    ? "border-white/20 text-white hover:bg-white/10"
+                    : "border-black/10 text-black hover:bg-black/5"
+                }`}
+              >
+                View my Services
               </a>
             </Magnetic>
           </div>
@@ -135,22 +191,40 @@ const About = () => {
     <section id="about" className="py-24 sm:py-40 px-4 sm:px-8 md:px-24">
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 sm:gap-24 lg:gap-32 items-center">
         <div className="space-y-12">
-          <SectionHeading subtitle="About Me" title="Software Developer creating useful digital products." />
+          <SectionHeading
+            subtitle="About Me"
+            title="Software Developer creating useful digital products."
+          />
           <div className="space-y-8">
-            <p className={`text-lg sm:text-xl leading-relaxed ${isDark ? 'text-white/60' : 'text-neutral-500'}`}>
-              Hi, I'm Mohamed Super, a software developer focused on creating useful, user-friendly digital products. I combine thoughtful problem-solving with clean design to help ideas become reliable experiences people can use and trust.
+            <p
+              className={`text-lg sm:text-xl leading-relaxed ${isDark ? "text-white/60" : "text-neutral-500"}`}
+            >
+              Hi, I'm Mohamed Super, a software developer focused on creating
+              useful, user-friendly digital products. I combine thoughtful
+              problem-solving with clean design to help ideas become reliable
+              experiences people can use and trust.
             </p>
           </div>
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-8 pt-4">
             <Magnetic>
-              <a href="#contact" className={`block text-center px-8 sm:px-12 py-4 rounded-full text-[10px] font-bold uppercase tracking-widest ${isDark ? 'bg-white text-black' : 'bg-black text-white'
-                }`}>
+              <a
+                href="#contact"
+                className={`block text-center px-8 sm:px-12 py-4 rounded-full text-[10px] font-bold uppercase tracking-widest ${
+                  isDark ? "bg-white text-black" : "bg-black text-white"
+                }`}
+              >
                 Hire Me
               </a>
             </Magnetic>
             <Magnetic>
-              <Link to="/about" className={`block text-center px-8 sm:px-12 py-4 rounded-full text-[10px] font-bold uppercase tracking-widest border ${isDark ? 'border-white/10 text-white' : 'border-black/10 text-black'
-                }`}>
+              <Link
+                to="/about"
+                className={`block text-center px-8 sm:px-12 py-4 rounded-full text-[10px] font-bold uppercase tracking-widest border ${
+                  isDark
+                    ? "border-white/10 text-white"
+                    : "border-black/10 text-black"
+                }`}
+              >
                 Learn More
               </Link>
             </Magnetic>
@@ -158,10 +232,15 @@ const About = () => {
         </div>
 
         <div className="relative">
-          <div className={`rounded-[1000px] aspect-[3/3] overflow-hidden border-8 transition-colors duration-500 ${isDark ? 'border-white/5 bg-white/5' : 'border-white bg-neutral-100'
-            }`}>
+          <div
+            className={`rounded-[1000px] aspect-[3/3] overflow-hidden border-8 transition-colors duration-500 ${
+              isDark
+                ? "border-white/5 bg-white/5"
+                : "border-white bg-neutral-100"
+            }`}
+          >
             <img
-              src="/images/msd.png"
+              src="/images/msdumbuya.jpeg"
               alt="Process"
               className="w-full h-full object-cover opacity-80 hover:opacity-100 transition-all duration-1000"
             />
@@ -178,7 +257,10 @@ const Services = () => {
   return (
     <section id="services" className="py-24 sm:py-40 px-4 sm:px-8 md:px-24">
       <div className="max-w-7xl mx-auto space-y-16">
-        <SectionHeading subtitle="What I Offer" title="Digital solutions that move ideas forward." />
+        <SectionHeading
+          subtitle="What I Offer"
+          title="Digital solutions that move ideas forward."
+        />
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {SERVICES.map((service, index) => (
@@ -188,11 +270,17 @@ const Services = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: index * 0.08 }}
-              className={`p-6 sm:p-10 rounded-[32px] border ${isDark ? 'bg-white/5 border-white/5' : 'bg-white border-black/5 shadow-sm'}`}
+              className={`p-6 sm:p-10 rounded-[32px] border ${isDark ? "bg-white/5 border-white/5" : "bg-white border-black/5 shadow-sm"}`}
             >
-              <span className="text-sm font-mono text-brand-purple">0{index + 1}</span>
-              <h3 className="mt-8 text-2xl sm:text-3xl font-display font-medium">{service.title}</h3>
-              <p className={`mt-4 text-base leading-relaxed ${isDark ? 'text-white/60' : 'text-neutral-500'}`}>
+              <span className="text-sm font-mono text-brand-purple">
+                0{index + 1}
+              </span>
+              <h3 className="mt-8 text-2xl sm:text-3xl font-display font-medium">
+                {service.title}
+              </h3>
+              <p
+                className={`mt-4 text-base leading-relaxed ${isDark ? "text-white/60" : "text-neutral-500"}`}
+              >
                 {service.description}
               </p>
             </motion.div>
@@ -206,7 +294,10 @@ const Services = () => {
 const Timeline = () => {
   const { isDark } = useContext(ThemeContext);
   return (
-    <section id="timeline" className="py-24 sm:py-40 px-4 sm:px-8 md:px-24 border-t border-white/5 bg-black/20">
+    <section
+      id="timeline"
+      className="py-24 sm:py-40 px-4 sm:px-8 md:px-24 border-t border-white/5 bg-black/20"
+    >
       <div className="max-w-7xl mx-auto space-y-16 sm:space-y-32">
         <div className="text-center">
           <h2 className="text-4xl sm:text-5xl md:text-7xl font-display font-medium text-brand-purple tracking-tight">
@@ -221,25 +312,34 @@ const Timeline = () => {
 
           <div className="space-y-16 sm:space-y-24 relative">
             {TIMELINE.map((edu, idx) => (
-              <div key={idx} className={`relative flex items-center ${idx % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} flex-row`}>
-
+              <div
+                key={idx}
+                className={`relative flex items-center ${idx % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"} flex-row`}
+              >
                 {/* Timeline Dot - scaled down on mobile and perfectly centered with vertical line */}
-                <div className={`absolute left-[1px] md:left-1/2 md:-translate-x-1/2 w-5 h-5 md:w-12 md:h-12 rounded-full bg-brand-purple border-[4px] md:border-[6px] ${isDark ? 'border-[#0a0a0c]' : 'border-white'} z-20 shadow-[0_0_20px_rgba(46,138,86,0.5)]`} />
+                <div
+                  className={`absolute left-[1px] md:left-1/2 md:-translate-x-1/2 w-5 h-5 md:w-12 md:h-12 rounded-full bg-brand-purple border-[4px] md:border-[6px] ${isDark ? "border-[#0a0a0c]" : "border-white"} z-20 shadow-[0_0_20px_rgba(46,138,86,0.5)]`}
+                />
 
                 {/* Content Card - optimized paddings and spacing on narrow screens */}
-                <div className={`w-full md:w-[48%] pl-12 sm:pl-16 md:pl-0 ${idx % 2 === 0 ? 'md:pr-16' : 'md:pl-16'}`}>
+                <div
+                  className={`w-full md:w-[48%] pl-12 sm:pl-16 md:pl-0 ${idx % 2 === 0 ? "md:pr-16" : "md:pl-16"}`}
+                >
                   <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.8, delay: idx * 0.1 }}
-                    className={`p-5 sm:p-8 md:p-10 rounded-[16px] border transition-all duration-500 relative group hover:shadow-[0_0_40px_rgba(46,138,86,0.1)] ${isDark
-                      ? 'bg-[#0a0a0c]/80 backdrop-blur-sm border-white/10 hover:border-brand-purple/50'
-                      : 'bg-white border-black/5 shadow-2xl hover:border-brand-purple/50'
-                      }`}
+                    className={`p-5 sm:p-8 md:p-10 rounded-[16px] border transition-all duration-500 relative group hover:shadow-[0_0_40px_rgba(46,138,86,0.1)] ${
+                      isDark
+                        ? "bg-[#0a0a0c]/80 backdrop-blur-sm border-white/10 hover:border-brand-purple/50"
+                        : "bg-white border-black/5 shadow-2xl hover:border-brand-purple/50"
+                    }`}
                   >
                     <div className="inline-block border-b-2 border-brand-purple mb-4 sm:mb-6">
-                      <span className={`text-sm font-bold font-mono tracking-wider ${isDark ? 'text-white' : 'text-black'}`}>
+                      <span
+                        className={`text-sm font-bold font-mono tracking-wider ${isDark ? "text-white" : "text-black"}`}
+                      >
                         {edu.period}
                       </span>
                     </div>
@@ -248,11 +348,15 @@ const Timeline = () => {
                       {edu.title}
                     </h4>
 
-                    <p className={`text-lg sm:text-xl font-bold mb-4 sm:mb-6 ${isDark ? 'text-white' : 'text-black'}`}>
+                    <p
+                      className={`text-lg sm:text-xl font-bold mb-4 sm:mb-6 ${isDark ? "text-white" : "text-black"}`}
+                    >
                       {edu.institution}
                     </p>
 
-                    <p className={`text-sm sm:text-base leading-relaxed ${isDark ? 'text-neutral-400' : 'text-neutral-500'}`}>
+                    <p
+                      className={`text-sm sm:text-base leading-relaxed ${isDark ? "text-neutral-400" : "text-neutral-500"}`}
+                    >
                       {edu.description}
                     </p>
                   </motion.div>
@@ -279,7 +383,9 @@ const Skills = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 sm:gap-12">
           {SKILL_CATEGORIES.map((cat, idx) => (
             <div key={idx} className="space-y-8">
-              <h4 className={`text-[10px] font-bold uppercase tracking-[0.3em] pb-4 border-b ${isDark ? 'text-white/20 border-white/10' : 'text-black/20 border-black/10'}`}>
+              <h4
+                className={`text-[10px] font-bold uppercase tracking-[0.3em] pb-4 border-b ${isDark ? "text-white/20 border-white/10" : "text-black/20 border-black/10"}`}
+              >
                 {cat.title}
               </h4>
               <div className="flex flex-wrap gap-4">
@@ -288,10 +394,11 @@ const Skills = () => {
                     key={si}
                     whileHover={{ scale: 1.1, y: -4 }}
                     transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                    className={`px-5 py-2 rounded-full text-xs font-medium transition-all duration-300 border cursor-default ${isDark
-                      ? 'bg-white/5 border-white/5 text-white/60 hover:text-white hover:bg-brand-purple/20 hover:border-brand-purple/40 hover:shadow-[0_10px_20px_rgba(46,138,86,0.15)]'
-                      : 'bg-black/5 border-black/5 text-black/60 hover:text-black hover:bg-brand-purple/10 hover:border-brand-purple/30 hover:shadow-[0_10px_20px_rgba(46,138,86,0.1)]'
-                      }`}
+                    className={`px-5 py-2 rounded-full text-xs font-medium transition-all duration-300 border cursor-default ${
+                      isDark
+                        ? "bg-white/5 border-white/5 text-white/60 hover:text-white hover:bg-brand-purple/20 hover:border-brand-purple/40 hover:shadow-[0_10px_20px_rgba(46,138,86,0.15)]"
+                        : "bg-black/5 border-black/5 text-black/60 hover:text-black hover:bg-brand-purple/10 hover:border-brand-purple/30 hover:shadow-[0_10px_20px_rgba(46,138,86,0.1)]"
+                    }`}
                   >
                     {skill}
                   </motion.div>
@@ -308,29 +415,45 @@ const Skills = () => {
 const Projects = () => {
   const { isDark } = useContext(ThemeContext);
   return (
-    <section id="projects" className="py-24 sm:py-40 px-4 sm:px-8 md:px-24 bg-black/10">
+    <section
+      id="projects"
+      className="py-24 sm:py-40 px-4 sm:px-8 md:px-24 bg-black/10"
+    >
       <div className="max-w-7xl mx-auto space-y-32">
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-4">
           <SectionHeading subtitle="Selected Work" title="Projects." />
-          <Link to="/more-projects" className={`text-[10px] font-bold uppercase tracking-widest pb-2 border-b transition-colors ${isDark ? 'text-white/40 border-white/10 hover:text-white hover:border-white' : 'text-black/40 border-black/10 hover:text-black hover:border-black'
-            }`}>
+          <Link
+            to="/more-projects"
+            className={`text-[10px] font-bold uppercase tracking-widest pb-2 border-b transition-colors ${
+              isDark
+                ? "text-white/40 border-white/10 hover:text-white hover:border-white"
+                : "text-black/40 border-black/10 hover:text-black hover:border-black"
+            }`}
+          >
             View More Projects
           </Link>
         </div>
 
         <div className="grid grid-cols-1 gap-20 sm:gap-40">
           {PROJECTS.map((p, idx) => (
-            <div key={idx} className={`flex flex-col ${idx % 2 === 1 ? 'lg:flex-row-reverse' : 'lg:flex-row'} gap-8 sm:gap-12 lg:gap-24 items-center`}>
+            <div
+              key={idx}
+              className={`flex flex-col ${idx % 2 === 1 ? "lg:flex-row-reverse" : "lg:flex-row"} gap-8 sm:gap-12 lg:gap-24 items-center`}
+            >
               <motion.div
                 whileHover={{ y: -0 }} // Framer Motion expects numbers, not strings for pixel values
                 transition={{ type: "spring", stiffness: 300, damping: 25 }}
-                className={`w-full lg:w-1/2 aspect-video rounded-[32px] flex items-center justify-center p-5 transition-all duration-700 overflow-hidden relative group cursor-pointer ${isDark
-                  ? 'bg-white/5 border border-white/5 hover:shadow-[0_40px_80px_rgba(46,138,86,0.15)] focus-within:shadow-[0_40px_80px_rgba(46,138,86,0.15)]'
-                  : 'bg-neutral-900 border border-black/5 hover:shadow-[0_40px_80px_rgba(46,138,86,0.1)] focus-within:shadow-[0_40px_80px_rgba(46,138,86,0.1)]'
-                  }`}
+                className={`w-full lg:w-1/2 aspect-video rounded-[32px] flex items-center justify-center p-5 transition-all duration-700 overflow-hidden relative group cursor-pointer ${
+                  isDark
+                    ? "bg-white/5 border border-white/5 hover:shadow-[0_40px_80px_rgba(46,138,86,0.15)] focus-within:shadow-[0_40px_80px_rgba(46,138,86,0.15)]"
+                    : "bg-neutral-900 border border-black/5 hover:shadow-[0_40px_80px_rgba(46,138,86,0.1)] focus-within:shadow-[0_40px_80px_rgba(46,138,86,0.1)]"
+                }`}
               >
-                <div className={`w-full h-full rounded-[24px] shadow-2xl flex items-center justify-center transition-all duration-700 overflow-hidden ${isDark ? 'bg-neutral-900' : 'bg-red-500'
-                  }`}>
+                <div
+                  className={`w-full h-full rounded-[24px] shadow-2xl flex items-center justify-center transition-all duration-700 overflow-hidden ${
+                    isDark ? "bg-neutral-900" : "bg-black-800"
+                  }`}
+                >
                   <motion.img
                     whileHover={{ scale: 1 }}
                     transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
@@ -342,13 +465,30 @@ const Projects = () => {
               </motion.div>
 
               <div className="w-full lg:w-1/2 space-y-8">
-                <span className="text-[10px] font-bold text-neutral-300 uppercase tracking-[0.3em]">{p.tags.join(' • ')}</span>
-                <h3 className={`text-4xl sm:text-5xl lg:text-6xl font-display font-medium tracking-tight ${isDark ? 'text-white' : 'text-black'}`}>{p.title}</h3>
-                <p className={`text-base sm:text-lg lg:text-xl leading-relaxed ${isDark ? 'text-white/60' : 'text-neutral-500'}`}>{p.description}</p>
+                <span className="text-[10px] font-bold text-neutral-300 uppercase tracking-[0.3em]">
+                  {p.tags.join(" • ")}
+                </span>
+                <h3
+                  className={`text-4xl sm:text-5xl lg:text-6xl font-display font-medium tracking-tight ${isDark ? "text-white" : "text-black"}`}
+                >
+                  {p.title}
+                </h3>
+                <p
+                  className={`text-base sm:text-lg lg:text-xl leading-relaxed ${isDark ? "text-white/60" : "text-neutral-500"}`}
+                >
+                  {p.description}
+                </p>
                 <Magnetic>
-                  <Link to={p.link} className={`w-full sm:w-auto justify-center sm:justify-start inline-flex px-8 sm:px-12 py-5 rounded-2xl text-[12px] font-bold uppercase tracking-widest items-center gap-4 group transition-all ${isDark ? 'bg-white text-black shadow-xl shadow-white/5' : 'bg-black text-white shadow-xl shadow-black/10'
-                    }`}>
-                    View Case Study <ArrowRight className="w-4 h-4 group-hover:translate-x-2 transition-transform" />
+                  <Link
+                    to={p.link}
+                    className={`w-full sm:w-auto justify-center sm:justify-start inline-flex px-8 sm:px-12 py-5 rounded-2xl text-[12px] font-bold uppercase tracking-widest items-center gap-4 group transition-all ${
+                      isDark
+                        ? "bg-white text-black shadow-xl shadow-white/5"
+                        : "bg-black text-white shadow-xl shadow-black/10"
+                    }`}
+                  >
+                    View Case Study{" "}
+                    <ArrowRight className="w-4 h-4 group-hover:translate-x-2 transition-transform" />
                   </Link>
                 </Magnetic>
               </div>
@@ -363,27 +503,63 @@ const Projects = () => {
 const ArticlesPreview = () => {
   const { isDark } = useContext(ThemeContext);
   return (
-    <section id="articles-preview" className="py-24 sm:py-40 px-4 sm:px-8 md:px-24">
+    <section
+      id="articles-preview"
+      className="py-24 sm:py-40 px-4 sm:px-8 md:px-24"
+    >
       <div className="max-w-7xl mx-auto space-y-24">
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-4">
           <SectionHeading subtitle="Writing" title="Latest Articles." />
-          <Link to="/blog" className={`text-[10px] font-bold uppercase tracking-widest pb-2 border-b transition-colors ${isDark ? 'text-white/40 border-white/10 hover:text-white hover:border-white' : 'text-black/40 border-black/10 hover:text-black hover:border-black'
-            }`}>
+          <Link
+            to="/blog"
+            className={`text-[10px] font-bold uppercase tracking-widest pb-2 border-b transition-colors ${
+              isDark
+                ? "text-white/40 border-white/10 hover:text-white hover:border-white"
+                : "text-black/40 border-black/10 hover:text-black hover:border-black"
+            }`}
+          >
             View All Articles
           </Link>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {[
-            { title: "Bridging the Gap: Tech Education in SL", date: "May 5, 2025", cat: "Education", excerpt: "A closer look at how mentorship, community support, and practical learning are reshaping tech education in Sierra Leone and beyond." },
-            { title: "Frontend Performance in 2025", date: "April 28, 2025", cat: "Development", excerpt: "Modern frontend experiences now depend on thoughtful loading strategies, resilient UI patterns, and performance that feels invisible to users." }
+            {
+              title: "Bridging the Gap: Tech Education in SL",
+              date: "May 5, 2025",
+              cat: "Education",
+              excerpt:
+                "A closer look at how mentorship, community support, and practical learning are reshaping tech education in Sierra Leone and beyond.",
+            },
+            {
+              title: "Frontend Performance in 2025",
+              date: "April 28, 2025",
+              cat: "Development",
+              excerpt:
+                "Modern frontend experiences now depend on thoughtful loading strategies, resilient UI patterns, and performance that feels invisible to users.",
+            },
           ].map((article, i) => (
-            <Link key={i} to="/blog" className={`p-6 sm:p-10 rounded-[32px] border transition-all duration-500 group min-h-[300px] ${isDark ? 'glass-dark border-white/5 hover:bg-white/5' : 'bg-neutral-50 border-black/5 hover:bg-white'
-              }`}>
+            <Link
+              key={i}
+              to="/blog"
+              className={`p-6 sm:p-10 rounded-[32px] border transition-all duration-500 group min-h-[300px] ${
+                isDark
+                  ? "glass-dark border-white/5 hover:bg-white/5"
+                  : "bg-neutral-50 border-black/5 hover:bg-white"
+              }`}
+            >
               <div className="space-y-6 h-full flex flex-col">
-                <span className="text-[9px] font-bold uppercase tracking-widest text-brand-purple">{article.cat}</span>
-                <h3 className="text-2xl sm:text-3xl font-display font-medium group-hover:text-brand-purple transition-colors leading-tight">{article.title}</h3>
-                <p className={`text-sm sm:text-base leading-relaxed ${isDark ? 'text-white/60' : 'text-neutral-500'}`}>{article.excerpt}</p>
+                <span className="text-[9px] font-bold uppercase tracking-widest text-brand-purple">
+                  {article.cat}
+                </span>
+                <h3 className="text-2xl sm:text-3xl font-display font-medium group-hover:text-brand-purple transition-colors leading-tight">
+                  {article.title}
+                </h3>
+                <p
+                  className={`text-sm sm:text-base leading-relaxed ${isDark ? "text-white/60" : "text-neutral-500"}`}
+                >
+                  {article.excerpt}
+                </p>
                 <div className="mt-auto flex items-center gap-4 opacity-40 text-[9px] font-bold uppercase tracking-widest">
                   <span>{article.date}</span>
                   <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
@@ -407,44 +583,106 @@ const Contact = () => {
             <SectionHeading subtitle="Engagement" title="Contact Me." />
             <div className="space-y-12 pt-12">
               {[
-                { label: 'Location', val: '106 AirPort Ferry Road - Sierra Leone' },
-                { label: 'Phone & WhatsApp', val: '+23290471725', href: 'https://wa.me/23290471725' },
-                { label: 'Email', val: 'msdumbuya1475@email.com', href: 'mailto:msdumbuya1475@email.com' }
+                {
+                  label: "Location",
+                  val: "106 AirPort Ferry Road - Sierra Leone",
+                },
+                {
+                  label: "Phone & WhatsApp",
+                  val: "+23290471725",
+                  href: "https://wa.me/23290471725",
+                },
+                {
+                  label: "Email",
+                  val: "msdumbuya1475@email.com",
+                  href: "mailto:msdumbuya1475@email.com",
+                },
               ].map((item, i) => (
                 <div key={i} className="space-y-2">
-                  <p className={`text-[10px] font-bold uppercase tracking-widest ${isDark ? 'text-brand-purple' : 'text-neutral-300'}`}>{item.label}</p>
+                  <p
+                    className={`text-[10px] font-bold uppercase tracking-widest ${isDark ? "text-brand-purple" : "text-neutral-300"}`}
+                  >
+                    {item.label}
+                  </p>
                   {item.href ? (
-                    <a href={item.href} className={`text-2xl sm:text-3xl font-display transition-colors break-words ${isDark ? 'text-white hover:text-brand-purple' : 'text-black hover:text-neutral-500'}`}>
+                    <a
+                      href={item.href}
+                      className={`text-2xl sm:text-3xl font-display transition-colors break-words ${isDark ? "text-white hover:text-brand-purple" : "text-black hover:text-neutral-500"}`}
+                    >
                       {item.val}
                     </a>
                   ) : (
-                    <p className={`text-2xl sm:text-3xl font-display break-words ${isDark ? 'text-white' : 'text-black'}`}>{item.val}</p>
+                    <p
+                      className={`text-2xl sm:text-3xl font-display break-words ${isDark ? "text-white" : "text-black"}`}
+                    >
+                      {item.val}
+                    </p>
                   )}
                 </div>
               ))}
             </div>
           </div>
 
-          <div className={`p-8 sm:p-12 md:p-14 rounded-[32px] transition-all duration-500 ${isDark ? 'glass-dark border-white/5' : 'bg-neutral-50 border border-black/5'
-            }`}>
+          <div
+            className={`p-8 sm:p-12 md:p-14 rounded-[32px] transition-all duration-500 ${
+              isDark
+                ? "glass-dark border-white/5"
+                : "bg-neutral-50 border border-black/5"
+            }`}
+          >
             <form className="space-y-10" onSubmit={(e) => e.preventDefault()}>
               <div className="space-y-4">
-                <label className={`text-[10px] font-bold uppercase tracking-widest ${isDark ? 'text-white/40' : 'text-black/40'}`}>Name</label>
-                <input type="text" className={`w-full bg-transparent border-b py-4 focus:outline-none transition-colors ${isDark ? 'border-white/10 focus:border-white text-white' : 'border-black/10 focus:border-black text-black'
-                  }`} />
+                <label
+                  className={`text-[10px] font-bold uppercase tracking-widest ${isDark ? "text-white/40" : "text-black/40"}`}
+                >
+                  Name
+                </label>
+                <input
+                  type="text"
+                  className={`w-full bg-transparent border-b py-4 focus:outline-none transition-colors ${
+                    isDark
+                      ? "border-white/10 focus:border-white text-white"
+                      : "border-black/10 focus:border-black text-black"
+                  }`}
+                />
               </div>
               <div className="space-y-4">
-                <label className={`text-[10px] font-bold uppercase tracking-widest ${isDark ? 'text-white/40' : 'text-black/40'}`}>Email</label>
-                <input type="email" className={`w-full bg-transparent border-b py-4 focus:outline-none transition-colors ${isDark ? 'border-white/10 focus:border-white text-white' : 'border-black/10 focus:border-black text-black'
-                  }`} />
+                <label
+                  className={`text-[10px] font-bold uppercase tracking-widest ${isDark ? "text-white/40" : "text-black/40"}`}
+                >
+                  Email
+                </label>
+                <input
+                  type="email"
+                  className={`w-full bg-transparent border-b py-4 focus:outline-none transition-colors ${
+                    isDark
+                      ? "border-white/10 focus:border-white text-white"
+                      : "border-black/10 focus:border-black text-black"
+                  }`}
+                />
               </div>
               <div className="space-y-4">
-                <label className={`text-[10px] font-bold uppercase tracking-widest ${isDark ? 'text-white/40' : 'text-black/40'}`}>Message</label>
-                <textarea rows={4} className={`w-full bg-transparent border-b py-4 focus:outline-none transition-colors resize-none ${isDark ? 'border-white/10 focus:border-white text-white' : 'border-black/10 focus:border-black text-black'
-                  }`} />
+                <label
+                  className={`text-[10px] font-bold uppercase tracking-widest ${isDark ? "text-white/40" : "text-black/40"}`}
+                >
+                  Message
+                </label>
+                <textarea
+                  rows={4}
+                  className={`w-full bg-transparent border-b py-4 focus:outline-none transition-colors resize-none ${
+                    isDark
+                      ? "border-white/10 focus:border-white text-white"
+                      : "border-black/10 focus:border-black text-black"
+                  }`}
+                />
               </div>
-              <button className={`w-full py-6 rounded-2xl text-[11px] font-bold uppercase tracking-widest transition-all shadow-xl hover:scale-[1.02] active:scale-95 ${isDark ? 'bg-white text-black shadow-white/5' : 'bg-black text-white shadow-black/10'
-                }`}>
+              <button
+                className={`w-full py-6 rounded-2xl text-[11px] font-bold uppercase tracking-widest transition-all shadow-xl hover:scale-[1.02] active:scale-95 ${
+                  isDark
+                    ? "bg-white text-black shadow-white/5"
+                    : "bg-black text-white shadow-black/10"
+                }`}
+              >
                 Send Message
               </button>
             </form>

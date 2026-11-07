@@ -85,7 +85,7 @@ export const PROJECTS: Project[] = [
     description: "A warm café experience designed around fresh coffee, ethical beans, and the feeling of a welcoming neighborhood space.",
     tags: ["React", "Responsive Design", "Hospitality"],
     link: "/project/bloom-cafe",
-    image: "https://images.unsplash.com/photo-1445116572660-236099ec97a0?auto=format&fit=crop&q=80&w=1200",
+    image: "/images/cafe.png",
     percentage: "90%"
   },
 ];
@@ -107,6 +107,10 @@ export const SERVICES = [
     title: "Installable Web Apps",
     description: "Web applications that work smoothly across devices and can be installed for an app-like experience.",
   },
+  {
+    title: "In Person Teaching",
+    description: "Offer teaching to people who want to learn coding, web development, computer fundamental and ICT in person.",
+  },
 ];
 
 export const SKILL_CATEGORIES: SkillCategory[] = [
@@ -119,12 +123,7 @@ export const SKILL_CATEGORIES: SkillCategory[] = [
 ];
 
 export const TIMELINE = [
-  {
-    title: "Software Developer Intern",
-    institution: "EasySTEM — Sensebod",
-    description: "Worked on Sensebod (sensebod.com), an education-focused project, building responsive interfaces and improving the learning product experience.",
-    period: "January 2026 - July 2026"
-  },
+
   /*
   {
     title: "BSc in Software Engineering",
@@ -138,6 +137,18 @@ export const TIMELINE = [
     institution: "Limkokwing University Sierra Leone",
     description: "Started my university journey in 2026, focusing on deepening my theoretical knowledge and practical application of software engineering principles in a global academic environment.",
     period: "2026 - Present"
+  },
+    {
+    title: "Freelancer",
+    institution: "MoCTI — Learn2Earn",
+    description: "Completed a 2 weeks freelancing program from the Ministry of Communication Technology and Innovation.",
+    period: "July 2026"
+  },
+    {
+    title: "Software Developer Intern",
+    institution: "EasySTEM — Sensebod",
+    description: "Worked on Sensebod (sensebod.com), an education-focused project, building responsive interfaces and improving the learning product experience.",
+    period: "January 2026 - July 2026"
   },
   {
     title: "Software Engineering Program",
