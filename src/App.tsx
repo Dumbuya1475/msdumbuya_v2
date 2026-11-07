@@ -376,7 +376,7 @@ const ScrollToTop = () => {
 export default function App() {
   const [isDark, setIsDark] = useState(() => {
     const saved = localStorage.getItem('theme');
-    return saved ? saved === 'dark' : true;
+    return saved ? saved === 'dark' : false;
   });
   const [isLoading, setIsLoading] = useState(true);
 
@@ -440,11 +440,11 @@ export default function App() {
               </div>
               <div className="flex flex-wrap justify-center gap-x-8 gap-y-4 md:gap-x-12">
                 {[
-                  { name: 'Twitter', url: 'https://twitter.com/msdumbuya' },
-                  { name: 'Github', url: 'https://github.com/msdumbuya' },
+                  { name: 'Learn to Earn', url: 'https://learn2earn.mocti.gov.sl/u/mohamed-super-dumbuya' },
                   { name: 'LinkedIn', url: 'https://www.linkedin.com/in/mohamed-super-dumbuya/' },
                   { name: 'Facebook', url: 'https://www.facebook.com/msdumbuya1475' },
-                  { name: 'Learn to Earn', url: 'https://learn2earn.mocti.gov.sl/u/mohamed-super-dumbuya' }
+                  { name: 'Github', url: 'https://github.com/Dumbuya1475' },
+                  { name: 'Twitter', url: 'https://x.com/msdumbuya1475' },
                 ].map(social => (
                   <a key={social.name} href={social.url} target="_blank" rel="noopener noreferrer" className={`text-[10px] font-bold uppercase tracking-widest hover:text-brand-purple transition-colors ${isDark ? 'text-white/40' : 'text-neutral-400'}`}>
                     {social.name}
